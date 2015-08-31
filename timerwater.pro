@@ -16,14 +16,20 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     frmtimer.cpp \
     frmsensor.cpp \
-    frmtemp.cpp
+    frmtemp.cpp \
+    dialog.cpp \
+    frminitial.cpp
 
 HEADERS  += mainwindow.h \
     frmtimer.h \
     frmsensor.h \
-    frmtemp.h
+    frmtemp.h \
+    dialog.h \
+    frminitial.h
 
 FORMS    += mainwindow.ui \
     frmtimer.ui \
     frmsensor.ui \
-    frmtemp.ui
+    frmtemp.ui \
+    dialog.ui \
+    frminitial.ui

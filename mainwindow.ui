@@ -30,7 +30,7 @@
      <string>ตั้งเวลา Timer</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="btnSensor">
     <property name="geometry">
      <rect>
       <x>40</x>
@@ -102,7 +102,7 @@
      <x>0</x>
      <y>0</y>
      <width>698</width>
-     <height>20</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>
