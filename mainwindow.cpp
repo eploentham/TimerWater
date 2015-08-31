@@ -1,8 +1,10 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include <frmtimer.h>
+#include <frmtimer1.h>
 #include <frminitial.h>
 #include <dialog.h>
+#include <frmroute.h>
+#include <fr
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -19,7 +21,7 @@ MainWindow::~MainWindow()
 void MainWindow::on_btnTimer_clicked()
 {
     //frmtimer frm = new frmtimer(this);
-    frminitial f;
+    frmtimer1 f;
     f.setModal(true);
     f.exec();
 
@@ -27,6 +29,12 @@ void MainWindow::on_btnTimer_clicked()
 
 void MainWindow::on_btnSensor_clicked()
 {
-    Dialog dis;
-    dis.show();
+
+}
+
+void MainWindow::on_btnRoute_clicked()
+{
+    frmroute f;
+    f.setModal(true);
+    f.exec();
 }

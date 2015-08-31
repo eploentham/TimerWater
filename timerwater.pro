@@ -18,18 +18,27 @@ SOURCES += main.cpp\
     frmsensor.cpp \
     frmtemp.cpp \
     dialog.cpp \
-    frminitial.cpp
+    frminitial.cpp \
+    frmtimer1.cpp \
+    frmroutepump.cpp \
+    frmroute.cpp
 
 HEADERS  += mainwindow.h \
     frmtimer.h \
     frmsensor.h \
     frmtemp.h \
     dialog.h \
-    frminitial.h
+    frminitial.h \
+    frmtimer1.h \
+    frmroutepump.h \
+    frmroute.h
 
 FORMS    += mainwindow.ui \
     frmtimer.ui \
     frmsensor.ui \
     frmtemp.ui \
     dialog.ui \
-    frminitial.ui
+    frminitial.ui \
+    frmtimer1.ui \
+    frmroutepump.ui \
+    frmroute.ui

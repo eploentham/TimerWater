@@ -20,6 +20,8 @@ private slots:
 
     void on_btnSensor_clicked();
 
+    void on_btnRoute_clicked();
+
 private:
     Ui::MainWindow *ui;
 };
