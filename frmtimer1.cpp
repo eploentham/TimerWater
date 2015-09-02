@@ -31,7 +31,7 @@ frmtimer1::frmtimer1(QWidget *parent) :
     ui->cboProgram->addItem("Program 20", QVariant(20));
     fileIni = QApplication::applicationDirPath() + "/timerwater.ini";
     qDebug() << fileIni;
-    readSettingsTimer();
+    readSettingsTimer(1);
 }
 void initail(){
 
@@ -40,9 +40,10 @@ void frmtimer1::writeSettingsTimer()
 {
     QSettings ss(fileIni, QSettings::IniFormat);
     //ss.setValue("text", "Hello World");
-    qDebug()<<ui->cboProgram->currentData();
+    //qDebug()<<ui->cboProgram->currentIndex();
     //QString prog = (ui->cboProgram->itemData()) ? m_pEdit->text() : "";
-    ss.beginGroup("Timer"+ui->cboProgram->currentData().toString());
+    //ss.beginGroup("Timer"+ui->cboProgram->currentIndex());
+    ss.beginGroup("Timer"+QString::number(ui->cboProgram->currentIndex()+1));//version 4.8 beaglebone black
     ss.setValue("Description", ui->txtDescription->text());
     QString monday = (ui->chkMonday->isChecked()) ? "on" : "off";
     ss.setValue("monday", monday);
@@ -76,9 +77,10 @@ void frmtimer1::writeSettingsTimer()
 
     ss.endGroup();
 }
-void frmtimer1::readSettingsTimer(){
+void frmtimer1::readSettingsTimer(int row){
     QSettings ss(fileIni, QSettings::IniFormat);
-    ss.beginGroup("Timer"+ui->cboProgram->currentData().toString());
+    qDebug()<<row;
+    ss.beginGroup("Timer"+QString::number(row));
     ss.value("monday").toString()=="on" ? ui->chkMonday->setChecked(true):ui->chkMonday->setChecked(false);
     ss.value("tueday").toString()=="on" ? ui->chkTueday->setChecked(true):ui->chkTueday->setChecked(false);
     ss.value("wednesday").toString()=="on" ? ui->chkWebnesday->setChecked(true):ui->chkWebnesday->setChecked(false);
@@ -105,5 +107,5 @@ void frmtimer1::on_btnSave_clicked()
 
 void frmtimer1::on_cboProgram_currentIndexChanged(int index)
 {
-    readSettingsTimer();
+    readSettingsTimer(index+1);
 }

@@ -24,7 +24,7 @@ private:
     Ui::frmtimer1 *ui;
     QString fileIni;
     void writeSettingsTimer();
-    void readSettingsTimer();
+    void readSettingsTimer(int row);
 };
 
 #endif // FRMTIMER1_H
