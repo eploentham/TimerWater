@@ -4,8 +4,8 @@
 #include <frminitial.h>
 #include <dialog.h>
 #include <frmroute.h>
-#include <fr
-
+#include <frmsensor1.h>
+#include <frmroute.h>
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -24,12 +24,13 @@ void MainWindow::on_btnTimer_clicked()
     frmtimer1 f;
     f.setModal(true);
     f.exec();
-
 }
 
 void MainWindow::on_btnSensor_clicked()
 {
-
+    frmsensor1 f;
+    f.setModal(true);
+    f.exec();
 }
 
 void MainWindow::on_btnRoute_clicked()

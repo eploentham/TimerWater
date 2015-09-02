@@ -21,7 +21,8 @@ SOURCES += main.cpp\
     frminitial.cpp \
     frmtimer1.cpp \
     frmroutepump.cpp \
-    frmroute.cpp
+    frmroute.cpp \
+    frmsensor1.cpp
 
 HEADERS  += mainwindow.h \
     frmtimer.h \
@@ -31,7 +32,8 @@ HEADERS  += mainwindow.h \
     frminitial.h \
     frmtimer1.h \
     frmroutepump.h \
-    frmroute.h
+    frmroute.h \
+    frmsensor1.h
 
 FORMS    += mainwindow.ui \
     frmtimer.ui \
@@ -41,4 +43,5 @@ FORMS    += mainwindow.ui \
     frminitial.ui \
     frmtimer1.ui \
     frmroutepump.ui \
-    frmroute.ui
+    frmroute.ui \
+    frmsensor1.ui

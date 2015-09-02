@@ -46,7 +46,7 @@
     </font>
    </property>
   </widget>
-  <widget class="QLineEdit" name="txtMessage">
+  <widget class="QLineEdit" name="txtDescription">
    <property name="geometry">
     <rect>
      <x>50</x>
@@ -95,7 +95,7 @@
   <widget class="QCheckBox" name="chkThurday">
    <property name="geometry">
     <rect>
-     <x>340</x>
+     <x>330</x>
      <y>130</y>
      <width>81</width>
      <height>19</height>
@@ -149,11 +149,16 @@
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>340</x>
+     <x>330</x>
      <y>230</y>
-     <width>51</width>
-     <height>16</height>
+     <width>61</width>
+     <height>20</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>เวลาสิ้นสุด</string>
@@ -163,9 +168,9 @@
    <property name="geometry">
     <rect>
      <x>580</x>
-     <y>290</y>
+     <y>280</y>
      <width>80</width>
-     <height>21</height>
+     <height>31</height>
     </rect>
    </property>
    <property name="text">
@@ -175,11 +180,16 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>60</x>
+     <x>56</x>
      <y>230</y>
-     <width>47</width>
-     <height>13</height>
+     <width>51</width>
+     <height>20</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>เวลาเริ่ม</string>
@@ -248,6 +258,11 @@
      <height>22</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
   </widget>
   <widget class="QCheckBox" name="chkWebnesday">
    <property name="geometry">
@@ -275,6 +290,116 @@
      <width>118</width>
      <height>22</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+  </widget>
+  <widget class="QRadioButton" name="chkactive">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>340</y>
+     <width>82</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>เปิดใช้งาน</string>
+   </property>
+  </widget>
+  <widget class="QRadioButton" name="chkUnActive">
+   <property name="geometry">
+    <rect>
+     <x>300</x>
+     <y>340</y>
+     <width>82</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>ปิดใช้งาน</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_9">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>190</y>
+     <width>71</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>เบอร์ Port  :</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="txtPort">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>190</y>
+     <width>161</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="chkRainnoON">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>270</y>
+     <width>261</width>
+     <height>19</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>ระหว่างฝนตก ไม่ต้องทำงาน</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="chkRainrelayON">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>300</y>
+     <width>261</width>
+     <height>19</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>หลังฝนตก ให้เปิด 1 ครั้ง</string>
    </property>
   </widget>
  </widget>
