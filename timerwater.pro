@@ -33,7 +33,8 @@ HEADERS  += mainwindow.h \
     frmtimer1.h \
     frmroutepump.h \
     frmroute.h \
-    frmsensor1.h
+    frmsensor1.h \
+    ../../lib/BlackLib/v3_0/BlackCore.h
 
 FORMS    += mainwindow.ui \
     frmtimer.ui \

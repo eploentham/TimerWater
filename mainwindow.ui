@@ -111,10 +111,10 @@
    <zorder>btnSensor</zorder>
    <zorder>pushButton</zorder>
    <zorder>pushButton_3</zorder>
-   <zorder>pushButton_4</zorder>
    <zorder>pushButton_5</zorder>
    <zorder>btnTimer</zorder>
    <zorder>btnRoute</zorder>
+   <zorder>pushButton_4</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">

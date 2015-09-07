@@ -39,3 +39,10 @@ void MainWindow::on_btnRoute_clicked()
     f.setModal(true);
     f.exec();
 }
+
+void MainWindow::on_pushButton_4_clicked()
+{
+    Dialog f;
+    f.setModal(true);
+    f.exec();
+}
