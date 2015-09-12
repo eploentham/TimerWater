@@ -6,6 +6,7 @@
 #include <frmroute.h>
 #include <frmsensor1.h>
 #include <frmroute.h>
+#include <frmstartwork.h>
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -45,4 +46,16 @@ void MainWindow::on_pushButton_4_clicked()
     Dialog f;
     f.setModal(true);
     f.exec();
+}
+
+void MainWindow::on_btnStartWork_clicked()
+{
+    frmStartWork f;
+    f.setModal(true);
+    f.exec();
+}
+
+void MainWindow::on_pushButton_5_clicked()
+{
+
 }
