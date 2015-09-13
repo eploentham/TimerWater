@@ -1,15 +1,23 @@
 #ifndef TIMER_H
 #define TIMER_H
 #include <QString>
-
+#include <QSettings>
+#include <QDateTime>
 class Timer
 {    
 public:
-    QString monday, tueday,wednesday, thurday, friday, saturday, sunday, Active, TimeStart, TimeEmd, RainonON, RainrelayON;
-    Timer(QString path);
-    void readSettingsTimer(int row);
+    QString monday, tuesday, wednesday, thursday, friday, saturday, sunday, Active, TimeStart, TimeEnd, RainonON, RainrelayON, TriggerTime, TriggerPort, TimePeriod, Description;
+    //QSettings ss;
+
+    Timer();
+
+    Timer clone();
+    Timer getTimerON(QDateTime dt);
+    //QVector <Timer> tim1;
+    //void refreshTim1Active();
 private :
     QString fileIni;
+    QString mapDay(QString day);
 };
 
 #endif // TIMER_H

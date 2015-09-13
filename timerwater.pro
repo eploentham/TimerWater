@@ -25,7 +25,8 @@ SOURCES += main.cpp\
     frmsensor1.cpp \
     frmstartwork.cpp \
     timer.cpp \
-    timer2.cpp
+    timer2.cpp \
+    timerwatercontrol.cpp
 
 HEADERS  += mainwindow.h \
     frmtimer.h \
@@ -39,7 +40,8 @@ HEADERS  += mainwindow.h \
     frmsensor1.h \
     frmstartwork.h \
     timer.h \
-    timer2.h
+    timer2.h \
+    timerwatercontrol.h
 
 FORMS    += mainwindow.ui \
     frmtimer.ui \

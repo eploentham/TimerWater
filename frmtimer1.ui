@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>731</width>
-    <height>399</height>
+    <width>744</width>
+    <height>407</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -149,8 +149,8 @@
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>330</x>
-     <y>230</y>
+     <x>570</x>
+     <y>190</y>
      <width>61</width>
      <height>20</height>
     </rect>
@@ -168,7 +168,7 @@
    <property name="geometry">
     <rect>
      <x>580</x>
-     <y>280</y>
+     <y>350</y>
      <width>80</width>
      <height>31</height>
     </rect>
@@ -180,8 +180,8 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>56</x>
-     <y>230</y>
+     <x>220</x>
+     <y>190</y>
      <width>51</width>
      <height>20</height>
     </rect>
@@ -252,9 +252,9 @@
   <widget class="QTimeEdit" name="timeEditStart">
    <property name="geometry">
     <rect>
-     <x>130</x>
-     <y>230</y>
-     <width>118</width>
+     <x>350</x>
+     <y>190</y>
+     <width>71</width>
      <height>22</height>
     </rect>
    </property>
@@ -285,9 +285,9 @@
   <widget class="QTimeEdit" name="timeEditEnd">
    <property name="geometry">
     <rect>
-     <x>410</x>
-     <y>230</y>
-     <width>118</width>
+     <x>650</x>
+     <y>190</y>
+     <width>71</width>
      <height>22</height>
     </rect>
    </property>
@@ -301,7 +301,7 @@
    <property name="geometry">
     <rect>
      <x>130</x>
-     <y>340</y>
+     <y>370</y>
      <width>82</width>
      <height>17</height>
     </rect>
@@ -319,7 +319,7 @@
    <property name="geometry">
     <rect>
      <x>300</x>
-     <y>340</y>
+     <y>370</y>
      <width>82</width>
      <height>17</height>
     </rect>
@@ -356,7 +356,7 @@
     <rect>
      <x>130</x>
      <y>190</y>
-     <width>161</width>
+     <width>71</width>
      <height>20</height>
     </rect>
    </property>
@@ -370,7 +370,7 @@
    <property name="geometry">
     <rect>
      <x>130</x>
-     <y>270</y>
+     <y>300</y>
      <width>261</width>
      <height>19</height>
     </rect>
@@ -388,7 +388,7 @@
    <property name="geometry">
     <rect>
      <x>130</x>
-     <y>300</y>
+     <y>330</y>
      <width>261</width>
      <height>19</height>
     </rect>
@@ -400,6 +400,95 @@
    </property>
    <property name="text">
     <string>หลังฝนตก ให้เปิด 1 ครั้ง</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>436</x>
+     <y>190</y>
+     <width>61</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>จำนวนนาที</string>
+   </property>
+  </widget>
+  <widget class="QSpinBox" name="spinBox">
+   <property name="geometry">
+    <rect>
+     <x>510</x>
+     <y>190</y>
+     <width>47</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_10">
+   <property name="geometry">
+    <rect>
+     <x>500</x>
+     <y>230</y>
+     <width>141</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>เบอร์ Port ให้ทำงานต่อ  :</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="txtPort_2">
+   <property name="geometry">
+    <rect>
+     <x>650</x>
+     <y>230</y>
+     <width>71</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_5">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>230</y>
+     <width>121</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>ให้ทำงานต่อ กี่นาที</string>
+   </property>
+  </widget>
+  <widget class="QSpinBox" name="spinBox_2">
+   <property name="geometry">
+    <rect>
+     <x>350</x>
+     <y>230</y>
+     <width>71</width>
+     <height>22</height>
+    </rect>
    </property>
   </widget>
  </widget>
