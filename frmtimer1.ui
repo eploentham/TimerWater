@@ -420,7 +420,7 @@
     <string>จำนวนนาที</string>
    </property>
   </widget>
-  <widget class="QSpinBox" name="spinBox">
+  <widget class="QSpinBox" name="spinBoxPeriod">
    <property name="geometry">
     <rect>
      <x>510</x>
@@ -448,7 +448,7 @@
     <string>เบอร์ Port ให้ทำงานต่อ  :</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="txtPort_2">
+  <widget class="QLineEdit" name="txtTrigerPort">
    <property name="geometry">
     <rect>
      <x>650</x>
@@ -481,7 +481,7 @@
     <string>ให้ทำงานต่อ กี่นาที</string>
    </property>
   </widget>
-  <widget class="QSpinBox" name="spinBox_2">
+  <widget class="QSpinBox" name="spinBoxTrigerTime">
    <property name="geometry">
     <rect>
      <x>350</x>

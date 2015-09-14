@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <timerwatercontrol.h>
 
 namespace Ui {
 class MainWindow;
@@ -30,6 +31,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    TimerWaterControl *twc;
 };
 
 #endif // MAINWINDOW_H

@@ -257,7 +257,7 @@
   <widget class="QPushButton" name="btnOpenDirect1c">
    <property name="geometry">
     <rect>
-     <x>480</x>
+     <x>490</x>
      <y>50</y>
      <width>31</width>
      <height>21</height>
@@ -270,7 +270,7 @@
   <widget class="QPushButton" name="btnOpenDirect2c">
    <property name="geometry">
     <rect>
-     <x>730</x>
+     <x>740</x>
      <y>50</y>
      <width>31</width>
      <height>21</height>
@@ -283,7 +283,7 @@
   <widget class="QPushButton" name="btnOpenDirect3c">
    <property name="geometry">
     <rect>
-     <x>970</x>
+     <x>980</x>
      <y>50</y>
      <width>31</width>
      <height>21</height>

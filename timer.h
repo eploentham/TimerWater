@@ -6,7 +6,7 @@
 class Timer
 {    
 public:
-    QString monday, tuesday, wednesday, thursday, friday, saturday, sunday, Active, TimeStart, TimeEnd, RainonON, RainrelayON, TriggerTime, TriggerPort, TimePeriod, Description;
+    QString monday, tuesday, wednesday, thursday, friday, saturday, sunday, Active, TimeStart, TimeEnd, RainonON, RainrelayON, TriggerTime, TriggerPort, TimePeriod, Description, Port;
     //QSettings ss;
 
     Timer();

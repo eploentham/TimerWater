@@ -18,7 +18,7 @@ public:
 
 private:
     Ui::frmStartWork *ui;
-    QTimer *timer1;
+    //QTimer *timer1;
     QTimer *timerwork;
     Timer *tim;
     TimerWaterControl *twc;
@@ -26,6 +26,9 @@ private:
 private slots:
     void onSetDateTime();
     void onSetTimerWork();
+    void on_btnOpenDirect1_clicked();
+    void on_btnOpenDirect2_clicked();
+    void on_btnOpenDirect3_clicked();
 };
 
 #endif // FRMSTARTWORK_H

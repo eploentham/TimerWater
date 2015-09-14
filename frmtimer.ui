@@ -83,7 +83,7 @@
      <string>วันจันทร์</string>
     </property>
    </widget>
-   <widget class="QCheckBox" name="chkTueday">
+   <widget class="QCheckBox" name="chkTuesday">
     <property name="geometry">
      <rect>
       <x>150</x>
@@ -119,7 +119,7 @@
      <string>วันพุธ</string>
     </property>
    </widget>
-   <widget class="QCheckBox" name="chkThurday">
+   <widget class="QCheckBox" name="chkThursday">
     <property name="geometry">
      <rect>
       <x>350</x>

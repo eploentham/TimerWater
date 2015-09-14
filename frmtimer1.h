@@ -2,6 +2,7 @@
 #define FRMTIMER1_H
 
 #include <QDialog>
+#include <timerwatercontrol.h>
 
 namespace Ui {
 class frmtimer1;
@@ -14,6 +15,7 @@ class frmtimer1 : public QDialog
 public:
     explicit frmtimer1(QWidget *parent = 0);
     ~frmtimer1();
+    //void setTWC(TimerWaterControl *twc);
 
 private slots:
     void on_btnSave_clicked();
@@ -23,8 +25,10 @@ private slots:
 private:
     Ui::frmtimer1 *ui;
     QString fileIni;
+
     void writeSettingsTimer();
     void readSettingsTimer(int row);
+    TimerWaterControl *twc;
 };
 
 #endif // FRMTIMER1_H

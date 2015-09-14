@@ -20,6 +20,8 @@ Timer::Timer()
     TriggerPort="";
     TriggerTime="";
     TimePeriod="";
+    Port="";
+
     //fileIni = path + "/timerwater.ini";
     //refreshTim1Active();
     //ss(fileIni, QSettings::IniFormat,"");

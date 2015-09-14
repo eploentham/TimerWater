@@ -41,6 +41,7 @@ Timer TimerWaterControl::readSettingsTimer(int row){
     tim.TriggerPort = ss.value("triggerport").toString();
     tim.TimePeriod = ss.value("timeperiod").toString();
     tim.Description = ss.value("description").toString();
+    tim.Port = ss.value("port").toString();
     ss.endGroup();
     return tim;
 }
@@ -58,18 +59,18 @@ void TimerWaterControl::writeSettingsTimer(int row, Timer p){
     ss.setValue("friday",p.friday);
     ss.setValue("saturday",p.saturday);
     ss.setValue("sunday",p.sunday);
-    ss.setValue("RainonON",p.RainonON);
+    ss.setValue("rainnoON",p.RainonON);
 
-    ss.setValue("RainrelayON",p.RainrelayON);
+    ss.setValue("rainrelayON",p.RainrelayON);
     ss.setValue("timestart",p.TimeStart);
     ss.setValue("timeend",p.TimeEnd);
     ss.setValue("triggertime",p.TriggerTime);
 
     ss.setValue("triggerport",p.TriggerPort);
     ss.setValue("timeperiod",p.TimePeriod);
+    ss.setValue("port",p.Port);
     //ss.setValue("timeend",p.timeend);
-    //ss.setValue("timeend",p.timeend);
-
+    qDebug() << "triggerport "+p.TriggerPort;
     ss.endGroup();
 }
 void TimerWaterControl::refreshTim1Active(){
@@ -90,44 +91,32 @@ Timer TimerWaterControl::getTimerON(QDateTime dt){
     QString day = QString::number(dt.date().dayOfWeek());
     QString time = dt.time().toString();
     //time = time.mid(0,5);
-    qDebug() << "day "+day;
-    qDebug() << "time "+time;
+    //qDebug() << "day "+day;
+    //qDebug() << "time "+time;
+
+    QTime start, end;
     for(int i=0;i<tim1.size();i++){
         QString map = "";
-        if(day=="1" && tim1[i].monday=="on"){
-                if(tim1[i].TimeStart==time){
-                    chk=tim1[i];
-                }
-        }else if(day=="2" && tim1[i].tuesday=="on"){
-                if(tim1[i].TimeStart==time){
-                    chk=tim1[i];
-                }
+        start.setHMS(tim1[i].TimeStart.mid(0,2).toInt(),tim1[i].TimeStart.mid(3,2).toInt(),tim1[i].TimeStart.mid(6,2).toInt());
+        end.setHMS(tim1[i].TimeEnd.mid(0,2).toInt(),tim1[i].TimeEnd.mid(3,2).toInt(),tim1[i].TimeEnd.mid(6,2).toInt());
+        if(day=="1" && tim1[i].monday=="on" && (dt.time().operator >=(start) && (dt.time().operator <=(end)))){
+            //qDebug() << "start "+start.toString()+" end "+end.toString()+" cur "+cur.toString()+" time "+time;
+            chk=tim1[i];
+        }else if(day=="2" && tim1[i].tuesday=="on" && (dt.time().operator >=(start) && (dt.time().operator <=(end)))){
+            chk=tim1[i];
         }
-        else if(day=="3" && tim1[i].wednesday=="on"){
-                if(tim1[i].TimeStart==time){
-                    chk=tim1[i];
-                }
-        }else if(day=="4" && tim1[i].thursday=="on"){
-                if(tim1[i].TimeStart==time){
-                    chk=tim1[i];
-                }
+        else if(day=="3" && tim1[i].wednesday=="on" && (dt.time().operator >=(start) && (dt.time().operator <=(end)))){
+            chk=tim1[i];
+        }else if(day=="4" && tim1[i].thursday=="on" && (dt.time().operator >=(start) && (dt.time().operator <=(end)))){
+            chk=tim1[i];
         }
-        else if(day=="5" && tim1[i].friday=="on"){
-                if(tim1[i].TimeStart==time){
-                    chk=tim1[i];
-                }
-        }else if(day=="6" && tim1[i].saturday=="on"){
-                if(tim1[i].TimeStart==time){
-                    chk=tim1[i];
-                }
+        else if(day=="5" && tim1[i].friday=="on" && (dt.time().operator >=(start) && (dt.time().operator <=(end)))){
+            chk=tim1[i];
+        }else if(day=="6" && tim1[i].saturday=="on" && (dt.time().operator >=(start) && (dt.time().operator <=(end)))){
+            chk=tim1[i];
         }
-        else if(day=="7" && tim1[i].sunday=="on"){
-            qDebug() << "5555 day "+day+" sunday "+tim1[i].sunday;
-                qDebug() << "5555 time "+time + "  tim1[i].TimeStart "+tim1[i].TimeStart;
-                if(tim1[i].TimeStart==time){
-                    qDebug() << "999999";
-                    chk=tim1[i];
-                }
+        else if(day=="7" && tim1[i].sunday=="on" && (dt.time().operator >=(start) && (dt.time().operator <=(end)))){
+            chk=tim1[i];
         }
     }
     return chk;
@@ -138,46 +127,50 @@ Timer TimerWaterControl::getTimerOFF(QDateTime dt){
     QString day = QString::number(dt.date().dayOfWeek());
     QString time = dt.time().toString();
     //time = time.mid(0,5);
-    qDebug() << "day "+day;
-    qDebug() << "time "+time;
+    //qDebug() << "day "+day;
+    //qDebug() << "time "+time;
+    QTime start, end;
     for(int i=0;i<tim1.size();i++){
         QString map = "";
-        if(day=="1" && tim1[i].monday=="off"){
-                if(tim1[i].TimeStart==time){
-                    chk=tim1[i];
-                }
-        }else if(day=="2" && tim1[i].tuesday=="off"){
-                if(tim1[i].TimeStart==time){
-                    chk=tim1[i];
-                }
+        start.setHMS(tim1[i].TimeStart.mid(0,2).toInt(),tim1[i].TimeStart.mid(3,2).toInt(),tim1[i].TimeStart.mid(6,2).toInt());
+        end.setHMS(tim1[i].TimeEnd.mid(0,2).toInt(),tim1[i].TimeEnd.mid(3,2).toInt(),tim1[i].TimeEnd.mid(6,2).toInt());
+        //qDebug() << "start "+start.toString()+" end "+end.toString()+" dt.time() "+dt.time().toString();
+        if(day=="1" && tim1[i].monday=="on" && tim1[i].TimeEnd==time){
+            qDebug() <<"888888"+QString::number(i)+tim1[i].Port;
+            chk=tim1[i];
+            //}
+        }else if(day=="2" && tim1[i].tuesday=="on"){
+            if(tim1[i].TimeEnd==time){
+                chk=tim1[i];
+            }
         }
-        else if(day=="3" && tim1[i].wednesday=="off"){
-                if(tim1[i].TimeStart==time){
-                    chk=tim1[i];
-                }
-        }else if(day=="4" && tim1[i].thursday=="off"){
-                if(tim1[i].TimeStart==time){
-                    chk=tim1[i];
-                }
+        else if(day=="3" && tim1[i].wednesday=="on"){
+            if(tim1[i].TimeEnd==time){
+                chk=tim1[i];
+            }
+        }else if(day=="4" && tim1[i].thursday=="on"){
+            if(tim1[i].TimeEnd==time){
+                chk=tim1[i];
+            }
         }
         else if(day=="5"){
-            if(tim1[i].friday=="off"){
-                if(tim1[i].TimeStart==time){
+            if(tim1[i].friday=="on"){
+                if(tim1[i].TimeEnd==time){
                     chk=tim1[i];
                 }
             }
         }else if(day=="6"){
-            if(tim1[i].saturday=="off"){
-                if(tim1[i].TimeStart==time){
+            if(tim1[i].saturday=="on"){
+                if(tim1[i].TimeEnd==time){
                     chk=tim1[i];
                 }
             }
         }
         else if(day=="7"){
             qDebug() << "5555 day "+day+" sunday "+tim1[i].sunday;
-            if(tim1[i].sunday=="off"){
+            if(tim1[i].sunday=="on"){
                 qDebug() << "5555 time "+time + "  tim1[i].TimeStart "+tim1[i].TimeStart;
-                if(tim1[i].TimeStart==time){
+                if(tim1[i].TimeEnd==time){
                     qDebug() << "999999";
                     chk=tim1[i];
                 }
