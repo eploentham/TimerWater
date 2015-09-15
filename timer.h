@@ -11,13 +11,13 @@ public:
 
     Timer();
 
-    Timer clone();
-    Timer getTimerON(QDateTime dt);
+    //Timer clone();
+    //Timer getTimerON(QDateTime dt);
     //QVector <Timer> tim1;
     //void refreshTim1Active();
 private :
     QString fileIni;
-    QString mapDay(QString day);
+    //QString mapDay(QString day);
 };
 
 #endif // TIMER_H

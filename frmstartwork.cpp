@@ -3,7 +3,7 @@
 #include <QTimer>
 #include <QDateTime>
 #include <QDebug>
-
+#include <frmopennow.h>
 frmStartWork::frmStartWork(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::frmStartWork)
@@ -26,9 +26,12 @@ frmStartWork::frmStartWork(QWidget *parent) :
             ui->lvTimer->addItem(tmp);
         //}
     }
-    ui->btnOpenDirect1->setStyleSheet("background-color: rgb(255,125,100)");
+    ui->btnOpenNow1->setStyleSheet("background-color: rgb(255,125,100)");
     ui->btnOpenDirect2->setStyleSheet("background-color: rgb(255,125,100)");
     ui->btnOpenDirect3->setStyleSheet("background-color: rgb(255,125,100)");
+    on1 = twc->readSettingsOpenNow(1);
+    on2 = twc->readSettingsOpenNow(2);
+    on3 = twc->readSettingsOpenNow(3);
 
     //timer1 = new QTimer(this);
     //connect(timer1, SIGNAL(timeout()), this, SLOT(onSetTimerWork()));
@@ -51,19 +54,21 @@ void frmStartWork::onSetTimerWork(){
     ui->txtDate->setText(QDateTime::currentDateTime().toString("dd-MM-yyyy hh:mm:ss"));
     //qDebug() <<ui->txtDate->text().mid(ui->txtDate->text().length()-2);
     //if(ui->txtDate->text().mid(ui->txtDate->text().length()-2)="00"){
+    if(QDateTime::currentDateTime().toString("ss")=="00"){
+        Timer chkON = twc->getTimerON(QDateTime::currentDateTime());
+        Timer chkOFF = twc->getTimerOFF(QDateTime::currentDateTime());
+        //qDebug() <<ui->txtDate->text();
 
+        if(chkON.Active=="1"){
+            ui->txtCurWork1->setText("Start "+ chkON.Port);
+            twc->openGPIO("30");
+        }
+        if(chkOFF.Active=="1"){
+            ui->txtCurWork1->setText("End "+chkOFF.Port);
+            twc->closeGPIO("30");
+        }
+    }
     //}
-    Timer chkON = twc->getTimerON(QDateTime::currentDateTime());
-    Timer chkOFF = twc->getTimerOFF(QDateTime::currentDateTime());
-    qDebug() <<ui->txtDate->text();
-    if(chkON.Active=="1"){
-        ui->txtCurWork1->setText("Start "+ chkON.Port);
-        twc->openGPIO("30");
-    }
-    if(chkOFF.Active=="1"){
-        ui->txtCurWork1->setText("End "+chkOFF.Port);
-        twc->closeGPIO("30");
-    }
 }
 
 frmStartWork::~frmStartWork()
@@ -71,17 +76,6 @@ frmStartWork::~frmStartWork()
     delete ui;
 }
 
-void frmStartWork::on_btnOpenDirect1_clicked()
-{
-    QString aa = ui->btnOpenDirect1->styleSheet();
-    //qDebug() << aa;
-    if(aa.indexOf("255,125,100")>0){
-        ui->btnOpenDirect1->setStyleSheet("background-color: rgb(19,159,47)");
-    }else{
-        //qDebug() << "aa";
-        ui->btnOpenDirect1->setStyleSheet("background-color: rgb(255,125,100)");
-    }
-}
 
 void frmStartWork::on_btnOpenDirect2_clicked()
 {
@@ -101,4 +95,23 @@ void frmStartWork::on_btnOpenDirect3_clicked()
         //qDebug() << "aa";
         ui->btnOpenDirect3->setStyleSheet("background-color: rgb(255,125,100)");
     }
+}
+
+void frmStartWork::on_btnOpenNow1_clicked()
+{
+    QString aa = ui->btnOpenNow1->styleSheet();
+    //qDebug() << aa;
+    if(aa.indexOf("255,125,100")>0){
+        ui->btnOpenNow1->setStyleSheet("background-color: rgb(19,159,47)");
+    }else{
+        //qDebug() << "aa";
+        ui->btnOpenNow1->setStyleSheet("background-color: rgb(255,125,100)");
+    }
+}
+
+void frmStartWork::on_btnOpenNow1c_clicked()
+{
+    frmOpenNow f;
+    f.setModal(true);
+    f.exec();
 }

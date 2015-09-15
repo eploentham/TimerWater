@@ -26,7 +26,9 @@ SOURCES += main.cpp\
     frmstartwork.cpp \
     timer.cpp \
     timer2.cpp \
-    timerwatercontrol.cpp
+    timerwatercontrol.cpp \
+    frmopennow.cpp \
+    opennow.cpp
 
 HEADERS  += mainwindow.h \
     frmtimer.h \
@@ -41,7 +43,9 @@ HEADERS  += mainwindow.h \
     frmstartwork.h \
     timer.h \
     timer2.h \
-    timerwatercontrol.h
+    timerwatercontrol.h \
+    frmopennow.h \
+    opennow.h
 
 FORMS    += mainwindow.ui \
     frmtimer.ui \
@@ -53,4 +57,5 @@ FORMS    += mainwindow.ui \
     frmroutepump.ui \
     frmroute.ui \
     frmsensor1.ui \
-    frmstartwork.ui
+    frmstartwork.ui \
+    frmopennow.ui

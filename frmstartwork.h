@@ -4,6 +4,7 @@
 #include <QDialog>
 #include <timer.h>
 #include <timerwatercontrol.h>
+#include <opennow.h>
 namespace Ui {
 class frmStartWork;
 }
@@ -22,13 +23,15 @@ private:
     QTimer *timerwork;
     Timer *tim;
     TimerWaterControl *twc;
+    OpenNow on1, on2,on3;
     //QVector <Timer> tim1;
 private slots:
     void onSetDateTime();
     void onSetTimerWork();
-    void on_btnOpenDirect1_clicked();
     void on_btnOpenDirect2_clicked();
     void on_btnOpenDirect3_clicked();
+    void on_btnOpenNow1_clicked();
+    void on_btnOpenNow1c_clicked();
 };
 
 #endif // FRMSTARTWORK_H

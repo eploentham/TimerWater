@@ -17,6 +17,27 @@ QString TimerWaterControl::mapDay(QString day){
     else if(day=="7")        return "sunday";
     else        return "";
 }
+OpenNow TimerWaterControl::readSettingsOpenNow(int row){
+    QSettings ss(fileIni, QSettings::IniFormat);
+    OpenNow tim;
+    ss.beginGroup("OpenNow"+QString::number(row));
+    tim.description = ss.value("description").toString();
+    tim.port = ss.value("port").toString();
+    tim.minute = ss.value("minute").toString();
+    ss.endGroup();
+    return tim;
+}
+void TimerWaterControl::writeSettingOpenNow(int row, OpenNow p){
+    QSettings ss(fileIni, QSettings::IniFormat);
+    ss.beginGroup("OpenNow"+QString::number(row));
+
+    ss.setValue("description",p.description);
+    ss.setValue("port",p.port);
+    ss.setValue("minute", p.minute);
+
+    ss.endGroup();
+}
+
 Timer TimerWaterControl::readSettingsTimer(int row){
     QSettings ss(fileIni, QSettings::IniFormat);
     Timer tim;

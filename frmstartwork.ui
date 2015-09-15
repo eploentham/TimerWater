@@ -163,7 +163,7 @@
     <string>Hello World</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="btnOpenDirect1">
+  <widget class="QPushButton" name="btnOpenNow1">
    <property name="geometry">
     <rect>
      <x>310</x>
@@ -254,7 +254,7 @@
     <enum>Qt::Vertical</enum>
    </property>
   </widget>
-  <widget class="QPushButton" name="btnOpenDirect1c">
+  <widget class="QPushButton" name="btnOpenNow1c">
    <property name="geometry">
     <rect>
      <x>450</x>
