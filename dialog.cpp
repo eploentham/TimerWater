@@ -35,7 +35,7 @@ Dialog::~Dialog()
 
 void Dialog::on_pushButton_clicked()
 {
-    file=fopen("/sys/class/gpio/value","rb+");
+    file=fopen("/sys/class/gpio/gpio30/value","rb+");
     if(file==NULL){
         qDebug() << "Write value LED on failed";
     }else{
@@ -46,7 +46,8 @@ void Dialog::on_pushButton_clicked()
 
 void Dialog::on_pushButton_2_clicked()
 {
-    file=fopen("sys/class/gpio/value","rb+");
+    //file=fopen("sys/class/gpio/gpio30/value","rb+");
+    file=fopen("/sys/class/gpio/gpio30/value","rb+");
     if(file==NULL){
         qDebug() << "Write value LED off failed";
     }else{

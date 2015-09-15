@@ -99,23 +99,23 @@ Timer TimerWaterControl::getTimerON(QDateTime dt){
         QString map = "";
         start.setHMS(tim1[i].TimeStart.mid(0,2).toInt(),tim1[i].TimeStart.mid(3,2).toInt(),tim1[i].TimeStart.mid(6,2).toInt());
         end.setHMS(tim1[i].TimeEnd.mid(0,2).toInt(),tim1[i].TimeEnd.mid(3,2).toInt(),tim1[i].TimeEnd.mid(6,2).toInt());
-        if(day=="1" && tim1[i].monday=="on" && (dt.time().operator >=(start) && (dt.time().operator <=(end)))){
+        if(day=="1" && tim1[i].monday=="on" && (dt.time().operator >=(start) && (dt.time().operator <(end)))){
             //qDebug() << "start "+start.toString()+" end "+end.toString()+" cur "+cur.toString()+" time "+time;
             chk=tim1[i];
-        }else if(day=="2" && tim1[i].tuesday=="on" && (dt.time().operator >=(start) && (dt.time().operator <=(end)))){
+        }else if(day=="2" && tim1[i].tuesday=="on" && (dt.time().operator >=(start) && (dt.time().operator <(end)))){
             chk=tim1[i];
         }
-        else if(day=="3" && tim1[i].wednesday=="on" && (dt.time().operator >=(start) && (dt.time().operator <=(end)))){
+        else if(day=="3" && tim1[i].wednesday=="on" && (dt.time().operator >=(start) && (dt.time().operator <(end)))){
             chk=tim1[i];
-        }else if(day=="4" && tim1[i].thursday=="on" && (dt.time().operator >=(start) && (dt.time().operator <=(end)))){
-            chk=tim1[i];
-        }
-        else if(day=="5" && tim1[i].friday=="on" && (dt.time().operator >=(start) && (dt.time().operator <=(end)))){
-            chk=tim1[i];
-        }else if(day=="6" && tim1[i].saturday=="on" && (dt.time().operator >=(start) && (dt.time().operator <=(end)))){
+        }else if(day=="4" && tim1[i].thursday=="on" && (dt.time().operator >=(start) && (dt.time().operator <(end)))){
             chk=tim1[i];
         }
-        else if(day=="7" && tim1[i].sunday=="on" && (dt.time().operator >=(start) && (dt.time().operator <=(end)))){
+        else if(day=="5" && tim1[i].friday=="on" && (dt.time().operator >=(start) && (dt.time().operator <(end)))){
+            chk=tim1[i];
+        }else if(day=="6" && tim1[i].saturday=="on" && (dt.time().operator >=(start) && (dt.time().operator <(end)))){
+            chk=tim1[i];
+        }
+        else if(day=="7" && tim1[i].sunday=="on" && (dt.time().operator >=(start) && (dt.time().operator <(end)))){
             chk=tim1[i];
         }
     }
@@ -178,4 +178,31 @@ Timer TimerWaterControl::getTimerOFF(QDateTime dt){
         }
     }
     return chk;
+}
+void TimerWaterControl::openGPIO(QString port)
+{
+    QString aa="/sys/class/gpio/gpio"+port+"/value";
+    QByteArray ba = aa.toLatin1();
+    const char *c_str2 = ba.data();
+    file=fopen(c_str2,"rb+");
+
+    if(file==NULL){
+        qDebug() << "Write value LED on failed";
+    }else{
+        fwrite("1",1,1,file);
+        fclose(file);
+    }
+}
+void TimerWaterControl::closeGPIO(QString port)
+{
+    QString aa="/sys/class/gpio/gpio"+port+"/value";
+    QByteArray ba = aa.toLatin1();
+    const char *c_str2 = ba.data();
+    file=fopen(c_str2,"rb+");
+    if(file==NULL){
+        qDebug() << "Write value LED on failed";
+    }else{
+        fwrite("0",1,1,file);
+        fclose(file);
+    }
 }

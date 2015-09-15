@@ -55,12 +55,14 @@ void frmStartWork::onSetTimerWork(){
     //}
     Timer chkON = twc->getTimerON(QDateTime::currentDateTime());
     Timer chkOFF = twc->getTimerOFF(QDateTime::currentDateTime());
-    //qDebug() <<chkON.Active;
+    qDebug() <<ui->txtDate->text();
     if(chkON.Active=="1"){
         ui->txtCurWork1->setText("Start "+ chkON.Port);
+        twc->openGPIO("30");
     }
     if(chkOFF.Active=="1"){
         ui->txtCurWork1->setText("End "+chkOFF.Port);
+        twc->closeGPIO("30");
     }
 }
 

@@ -13,8 +13,11 @@ public:
     Timer readSettingsTimer(int row);
     void writeSettingsTimer(int row, Timer p);
     void refreshTim1Active();
+    void openGPIO(QString port);
+    void closeGPIO(QString port);
 private:
     QString fileIni;
+    FILE *file;
     QString mapDay(QString day);
 };
 #endif // TIMERWATERCONTROL_H
