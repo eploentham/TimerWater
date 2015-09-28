@@ -13,8 +13,8 @@ class frmOpenNow : public QDialog
     Q_OBJECT
 
 public:
-    QString flag;
-    void setControl();
+    int flag;
+    void setControl(int flag);
     explicit frmOpenNow(QWidget *parent = 0);
     ~frmOpenNow();
 

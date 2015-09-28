@@ -8,12 +8,16 @@
 #include <frmroute.h>
 #include <frmstartwork.h>
 #include <QDebug>
+#include <QDesktopWidget>
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
     twc = new TimerWaterControl(QApplication::applicationDirPath());
+
+    //mainWindow->show();
+
 }
 
 MainWindow::~MainWindow()

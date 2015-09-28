@@ -28,10 +28,13 @@ private:
 private slots:
     void onSetDateTime();
     void onSetTimerWork();
-    void on_btnOpenDirect2_clicked();
-    void on_btnOpenDirect3_clicked();
+    void onTimerWork();
     void on_btnOpenNow1_clicked();
-    void on_btnOpenNow1c_clicked();
+    void on_btnOpenNow1c_clicked();    
+    void on_btnOpenNow2_clicked();
+    void on_btnOpenNow2c_clicked();
+    void on_btnOpenNow3c_clicked();
+    void on_btnOpenNow3_clicked();
 };
 
 #endif // FRMSTARTWORK_H

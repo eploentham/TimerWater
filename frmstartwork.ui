@@ -166,9 +166,9 @@
   <widget class="QPushButton" name="btnOpenNow1">
    <property name="geometry">
     <rect>
-     <x>310</x>
+     <x>169</x>
      <y>10</y>
-     <width>130</width>
+     <width>171</width>
      <height>61</height>
     </rect>
    </property>
@@ -176,12 +176,12 @@
     <string>เปิด/ปิด 1</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="btnOpenDirect2">
+  <widget class="QPushButton" name="btnOpenNow2">
    <property name="geometry">
     <rect>
-     <x>520</x>
+     <x>430</x>
      <y>10</y>
-     <width>130</width>
+     <width>171</width>
      <height>61</height>
     </rect>
    </property>
@@ -189,12 +189,12 @@
     <string>เปิด/ปิด 2</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="btnOpenDirect3">
+  <widget class="QPushButton" name="btnOpenNow3">
    <property name="geometry">
     <rect>
-     <x>750</x>
+     <x>709</x>
      <y>10</y>
-     <width>140</width>
+     <width>181</width>
      <height>61</height>
     </rect>
    </property>
@@ -257,7 +257,7 @@
   <widget class="QPushButton" name="btnOpenNow1c">
    <property name="geometry">
     <rect>
-     <x>450</x>
+     <x>350</x>
      <y>50</y>
      <width>31</width>
      <height>21</height>
@@ -267,10 +267,10 @@
     <string>...</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="btnOpenDirect2c">
+  <widget class="QPushButton" name="btnOpenNow2c">
    <property name="geometry">
     <rect>
-     <x>680</x>
+     <x>610</x>
      <y>50</y>
      <width>31</width>
      <height>21</height>
@@ -280,10 +280,10 @@
     <string>...</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="btnOpenDirect3c">
+  <widget class="QPushButton" name="btnOpenNow3c">
    <property name="geometry">
     <rect>
-     <x>910</x>
+     <x>900</x>
      <y>50</y>
      <width>31</width>
      <height>21</height>

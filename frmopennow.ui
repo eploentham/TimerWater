@@ -110,7 +110,7 @@
     <string>เปิดกี่นาที</string>
    </property>
   </widget>
-  <widget class="QSpinBox" name="spinBox">
+  <widget class="QSpinBox" name="spinBoxMinute">
    <property name="geometry">
     <rect>
      <x>130</x>

@@ -1,6 +1,11 @@
 #include "timerwatercontrol.h"
 #include <QDebug>
 #include <QSettings>
+/**
+ * @brief TimerWaterControl::TimerWaterControl
+ * @param path
+ * 58-09-28  Ekapop 1.0 add Method setTimerON,setTimerOFF
+ */
 TimerWaterControl::TimerWaterControl(QString path)
 {
     fileIni = path + "/timerwater.ini";
@@ -36,6 +41,7 @@ void TimerWaterControl::writeSettingOpenNow(int row, OpenNow p){
     ss.setValue("minute", p.minute);
 
     ss.endGroup();
+    qDebug() << "writeSettingOpenNow "+QString::number(row);
 }
 
 Timer TimerWaterControl::readSettingsTimer(int row){
@@ -190,7 +196,7 @@ Timer TimerWaterControl::getTimerOFF(QDateTime dt){
         else if(day=="7"){
             qDebug() << "5555 day "+day+" sunday "+tim1[i].sunday;
             if(tim1[i].sunday=="on"){
-                qDebug() << "5555 time "+time + "  tim1[i].TimeStart "+tim1[i].TimeStart;
+                qDebug() << "5555 time "+time + "  tim1[i].TimeEnd "+tim1[i].TimeEnd;
                 if(tim1[i].TimeEnd==time){
                     qDebug() << "999999";
                     chk=tim1[i];
@@ -200,30 +206,114 @@ Timer TimerWaterControl::getTimerOFF(QDateTime dt){
     }
     return chk;
 }
-void TimerWaterControl::openGPIO(QString port)
+QString TimerWaterControl::setTimerON(QDateTime dt){
+    //bool chk=false;
+    QString chk="";
+    QString day = QString::number(dt.date().dayOfWeek());
+    //QString time = dt.time().toString();
+    //time = time.mid(0,5);
+    //qDebug() << "day "+day;
+    //qDebug() << "time "+time;
+
+    QTime start, end;
+    for(int i=0;i<tim1.size();i++){
+        QString map = "";
+        start.setHMS(tim1[i].TimeStart.mid(0,2).toInt(),tim1[i].TimeStart.mid(3,2).toInt(),tim1[i].TimeStart.mid(6,2).toInt());
+        end.setHMS(tim1[i].TimeEnd.mid(0,2).toInt(),tim1[i].TimeEnd.mid(3,2).toInt(),tim1[i].TimeEnd.mid(6,2).toInt());
+        if(day=="1" && tim1[i].monday=="on" && (dt.time().operator >=(start) && (dt.time().operator <(end)))){
+            //qDebug() << "start "+start.toString()+" end "+end.toString();
+            //chk=tim1[i];
+            chk = openGPIO(tim1[i].Port);
+        }else if(day=="2" && tim1[i].tuesday=="on" && (dt.time().operator >=(start) && (dt.time().operator <(end)))){
+            //chk=tim1[i];
+            chk = openGPIO(tim1[i].Port);
+        }
+        else if(day=="3" && tim1[i].wednesday=="on" && (dt.time().operator >=(start) && (dt.time().operator <(end)))){
+            //chk=tim1[i];
+            chk = openGPIO(tim1[i].Port);
+        }else if(day=="4" && tim1[i].thursday=="on" && (dt.time().operator >=(start) && (dt.time().operator <(end)))){
+            //chk=tim1[i];
+            chk = openGPIO(tim1[i].Port);
+        }
+        else if(day=="5" && tim1[i].friday=="on" && (dt.time().operator >=(start) && (dt.time().operator <(end)))){
+            //chk=tim1[i];
+            chk = openGPIO(tim1[i].Port);
+        }else if(day=="6" && tim1[i].saturday=="on" && (dt.time().operator >=(start) && (dt.time().operator <(end)))){
+            //chk=tim1[i];
+            chk = openGPIO(tim1[i].Port);
+        }
+        else if(day=="7" && tim1[i].sunday=="on" && (dt.time().operator >=(start) && (dt.time().operator <(end)))){
+            //chk=tim1[i];
+            chk = openGPIO(tim1[i].Port);
+        }
+    }
+    //chk=="ok" ?log1= "openGPIO on":log1="openGPIO failed";
+    qDebug() << "setTimerON "+start.toString()+" end "+end.toString()+ chk;
+    return chk;
+}
+QString TimerWaterControl::setTimerOFF(QDateTime dt){
+    //bool chk=false;
+    QString chk;
+    QString day = QString::number(dt.date().dayOfWeek());
+    QString time = dt.time().toString();
+    QTime start, end;
+    for(int i=0;i<tim1.size();i++){
+        QString map = "";
+        start.setHMS(tim1[i].TimeStart.mid(0,2).toInt(),tim1[i].TimeStart.mid(3,2).toInt(),tim1[i].TimeStart.mid(6,2).toInt());
+        end.setHMS(tim1[i].TimeEnd.mid(0,2).toInt(),tim1[i].TimeEnd.mid(3,2).toInt(),tim1[i].TimeEnd.mid(6,2).toInt());
+        //qDebug() << "start "+start.toString()+" end "+end.toString()+" dt.time() "+dt.time().toString();
+        if(day=="1" && tim1[i].monday=="on" && tim1[i].TimeEnd==time){
+            chk = closeGPIO(tim1[i].Port);
+        }else if(day=="2" && tim1[i].tuesday=="on"&&(tim1[i].TimeEnd==time)){
+            chk = closeGPIO(tim1[i].Port);
+        }else if(day=="3" && tim1[i].wednesday=="on"&&(tim1[i].TimeEnd==time)){
+            chk = closeGPIO(tim1[i].Port);
+        }else if(day=="4" && tim1[i].thursday=="on"&&(tim1[i].TimeEnd==time)){
+            chk = closeGPIO(tim1[i].Port);
+        }else if(day=="5"&&(tim1[i].friday=="on")&&(tim1[i].TimeEnd==time)){
+            chk = closeGPIO(tim1[i].Port);
+        }else if(day=="6"&&(tim1[i].saturday=="on")&&(tim1[i].TimeEnd==time)){
+            chk = closeGPIO(tim1[i].Port);
+        }else if(day=="7"&&(tim1[i].sunday=="on")&&(tim1[i].TimeEnd==time)){
+            chk = closeGPIO(tim1[i].Port);
+        }
+    }
+    //chk=="ok" ?log1= "closeGPIO on":log1="closeGPIO failed";
+    qDebug() << "setTimerOFF "+start.toString()+" end "+end.toString()+ chk;
+    return chk;
+}
+QString TimerWaterControl::openGPIO(QString port)
 {
+    QString chk="OK";
     QString aa="/sys/class/gpio/gpio"+port+"/value";
     QByteArray ba = aa.toLatin1();
     const char *c_str2 = ba.data();
     file=fopen(c_str2,"rb+");
 
     if(file==NULL){
-        qDebug() << "Write value LED on failed";
+        qDebug() << "Write value ON failed";
+        chk=" openGPIO "+port+" failed";
     }else{
         fwrite("1",1,1,file);
         fclose(file);
+        chk=" openGPIO "+port+" ok";
     }
+    return chk;
 }
-void TimerWaterControl::closeGPIO(QString port)
+QString TimerWaterControl::closeGPIO(QString port)
 {
+    QString chk="";
     QString aa="/sys/class/gpio/gpio"+port+"/value";
     QByteArray ba = aa.toLatin1();
     const char *c_str2 = ba.data();
     file=fopen(c_str2,"rb+");
     if(file==NULL){
-        qDebug() << "Write value LED on failed";
+        qDebug() << "Write value OFF failed";
+        chk=" closeGPIO "+port+" failed";
     }else{
         fwrite("0",1,1,file);
         fclose(file);
+        chk=" closeGPIO "+port+" ok";
     }
+    return chk;
 }
