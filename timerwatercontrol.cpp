@@ -5,6 +5,7 @@
  * @brief TimerWaterControl::TimerWaterControl
  * @param path
  * 58-09-28  Ekapop 1.0 add Method setTimerON,setTimerOFF
+ * 58-09-29  Ekapop 1.1 add Method
  */
 TimerWaterControl::TimerWaterControl(QString path)
 {
