@@ -6,7 +6,7 @@
 #include <sys/ioctl.h>
 #include <fcntl.h>
 #include <linux/i2c-dev.h>
-
+#include <QThread>
 #include <QDialog>
 
 namespace Ui {

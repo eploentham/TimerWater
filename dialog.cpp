@@ -71,15 +71,53 @@ void Dialog::on_pushButton_2_clicked()
 
 void Dialog::on_pushButton_3_clicked()
 {
-    static const char *devName = "/dev/i2c-1";
+    static const char* devName = "/dev/i2c-1";
 
-    if ((file = fopen(devName, O_RDWR)) < 0) {
+    //if ((file = fopen(devName, O_RDWR)) < 0) {
+    if ((file = fopen(devName, "rb+")) < 0) {
         fprintf(stderr, "I2C: Failed to access %d\n", devName);
         exit(1);
     }
-    if (ioctl(file, I2C_SLAVE, ADDRESS) < 0) {
-        fprintf(stderr, "I2C: Failed to acquire bus access/talk to slave 0x%x\n", A$
-        exit(1);
-    }
+    //if (ioctl(file, I2C_SLAVE, ADDRESS) < 0) {
+    //    std::open(...)
+    //    fprintf(stderr, "I2C: Failed to acquire bus access/talk to slave 0x%x\n", ADDRESS);
+    //    exit(1);
+   // }
+
+    int arg;
+
+      //for (arg = 1; arg < argc; arg++) {
+        int val=2;
+        unsigned char cmd[16];
+
+        //if (0 == sscanf(argv[arg], "%d", &val)) {
+        //  fprintf(stderr, "Invalid parameter %d \"%s\"\n", arg, argv[arg]);
+        //  exit(1);
+        //}
+
+        printf("Sending %d\n", val);
+
+        cmd[0] = val;
+        if (fwrite(cmd,1, 1,file) == 1) {
+
+          // As we are not talking to direct hardware but a microcontroller we
+          // need to wait a short while so that it can respond.
+          //
+          // 1ms seems to be enough but it depends on what workload it has
+          //QObject.thread()-> Sleep(10000);
+          thread()->sleep(10000);
+          char buf[1];
+          if (fread(buf, 1, 1,file) == 1) {
+            int temp = (int) buf[0];
+
+            printf("Received %d\n", temp);
+          }
+        }
+
+        // Now wait else you could crash the arduino by sending requests too fast
+        thread()->sleep(10000);
+      //}
+
+      fclose(file);
 
 }
