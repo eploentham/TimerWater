@@ -15,7 +15,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     twc = new TimerWaterControl(QApplication::applicationDirPath());
-    this->setWindowTitle("Last Update 58-10-02");
+    this->setWindowTitle("Last Update 58-10-06");
     //mainWindow->show();
 
 }
