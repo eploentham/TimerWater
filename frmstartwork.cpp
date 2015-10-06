@@ -30,7 +30,8 @@ frmStartWork::frmStartWork(QWidget *parent) :
         //qDebug()<<"ccc" +QString::number(i);
         //if(twc->tim1[i].Active=="1"){
             //tim1[i]=tim->clone();
-            ui->lvTimer->addItem(tmp);
+        ui->lvTimer->addItem(tmp);
+        twc->initGPIO(twc->tim1[i].Port);
         //}
     }
     ui->btnOpenNow1->setStyleSheet("background-color: rgb(255,125,100)");

@@ -283,16 +283,10 @@ QString TimerWaterControl::setTimerOFF(QDateTime dt){
     qDebug() << "setTimerOFF "+start.toString()+" end "+end.toString()+ chk;
     return chk;
 }
-QString TimerWaterControl::openGPIO(QString port)
-{
-    QString chk="OK";
-    //QString paht1="/sys/class/gpio";
+void TimerWaterControl::initGPIO(QString port){
     QString path="/sys/class/gpio/gpio";
-    QString valu=path+port+"/value";
+    //QString valu=path+port+"/value";
     QString direc=path+port+"/direction";
-    //QString exp = path1+"/export";
-    QByteArray ba = valu.toLatin1();
-    const char *c_str2 = ba.data();
     char* port1 = new char[port.length() + 1];
     strcpy(port1, port.toLatin1().constData());
     file = fopen("/sys/class/gpio/export","w");
@@ -308,21 +302,29 @@ QString TimerWaterControl::openGPIO(QString port)
         if(file==NULL){
             qDebug() << "Write direction to activate GPIO failed " +path;
         }else{
-            fwrite("out",1,3,file);// echo out > direction
+            fwrite("out",1,2,file);//echo out > Direction
             fclose(file);
 
-            file=fopen(c_str2,"rb+");
-            if(file==NULL){
-                qDebug() << "Write value ON failed";
-                chk=" openGPIO "+port+" failed";
-            }else{
-                fwrite("1",1,1,file);//echo 1 > value
-                fclose(file);
-                chk=" openGPIO "+port+" ok";
-            }
         }
     }
-    file=NULL;
+    file = NULL;
+}
+QString TimerWaterControl::openGPIO(QString port)
+{
+    QString chk="OK";
+    QString aa="/sys/class/gpio/gpio"+port+"/value";
+    QByteArray ba = aa.toLatin1();
+    const char *c_str2 = ba.data();
+    file=fopen(c_str2,"rb+");
+
+    if(file==NULL){
+        qDebug() << "Write value ON failed";
+        chk=" openGPIO "+port+" failed";
+    }else{
+        fwrite("1",1,1,file);
+        fclose(file);
+        chk=" openGPIO "+port+" ok";
+    }
     return chk;
 }
 QString TimerWaterControl::closeGPIO(QString port)

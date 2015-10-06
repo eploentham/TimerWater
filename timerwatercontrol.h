@@ -20,6 +20,8 @@ public:
     void refreshTim1Active();
     QString openGPIO(QString port);
     QString closeGPIO(QString port);
+    void initGPIO(QString port);
+    void uninitGPIO(QString port);
 private:
     QString fileIni;
     FILE *file;
