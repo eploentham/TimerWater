@@ -81,7 +81,9 @@ void frmStartWork::onTimerWork(){
     QString chkON = twc->setTimerON(QDateTime::currentDateTime());
     QString chkOFF = twc->setTimerOFF(QDateTime::currentDateTime());
     //qDebug() <<ui->txtDate->text();
-
+    if(chkON.indexOf("failed")){
+        chkON = twc->setTimerON(QDateTime::currentDateTime());
+    }
     //if(chkON.Active=="1"){
         ui->txtCurWork1->setText(chkON);
     //    twc->openGPIO("30");

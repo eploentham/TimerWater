@@ -9,6 +9,7 @@
 #include <frmstartwork.h>
 #include <QDebug>
 #include <QDesktopWidget>
+#include <frmcalendar.h>
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -67,4 +68,11 @@ void MainWindow::on_btnStartWork_clicked()
 void MainWindow::on_pushButton_5_clicked()
 {
 
+}
+
+void MainWindow::on_btnCalendar_clicked()
+{
+    frmCalendar f;
+    f.setModal(true);
+    f.exec();
 }
