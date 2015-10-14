@@ -29,6 +29,8 @@ private slots:
 
     void on_pushButton_5_clicked();
 
+    void on_btnCalendar_clicked();
+
 private:
     Ui::MainWindow *ui;
     TimerWaterControl *twc;

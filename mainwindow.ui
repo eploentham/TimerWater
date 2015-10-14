@@ -34,8 +34,8 @@
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>110</y>
-      <width>131</width>
+      <y>150</y>
+      <width>151</width>
       <height>41</height>
      </rect>
     </property>
@@ -47,8 +47,8 @@
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>180</y>
-      <width>181</width>
+      <y>220</y>
+      <width>221</width>
       <height>41</height>
      </rect>
     </property>
@@ -121,6 +121,19 @@
      <string>เริ่มการทำงาน</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="btnCalendar">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>100</y>
+      <width>151</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>ตั้งเวลาใส่ปุ๋ย</string>
+    </property>
+   </widget>
    <zorder>btnSensor</zorder>
    <zorder>pushButton</zorder>
    <zorder>pushButton_3</zorder>
@@ -129,6 +142,7 @@
    <zorder>btnRoute</zorder>
    <zorder>pushButton_4</zorder>
    <zorder>btnStartWork</zorder>
+   <zorder>btnCalendar</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
@@ -136,7 +150,7 @@
      <x>0</x>
      <y>0</y>
      <width>698</width>
-     <height>21</height>
+     <height>25</height>
     </rect>
    </property>
   </widget>

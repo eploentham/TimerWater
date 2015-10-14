@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include <QApplication>
-#include <QDesktopWidget>
+#include <QDesktopWidget>\
+
 /**
  * @brief main
  * @param argc
@@ -17,6 +18,8 @@ int main(int argc, char *argv[])
     int x = (screenGeometry.width()-w.width()) / 2;         //1.0
     int y = (screenGeometry.height()-w.height()) / 2;       //1.0
     w.move(x, y);       //1.0
+    QString arg=argv[0];
+
     w.show();
 
     return a.exec();
