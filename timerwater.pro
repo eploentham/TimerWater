@@ -29,7 +29,8 @@ SOURCES += main.cpp\
     timerwatercontrol.cpp \
     frmopennow.cpp \
     opennow.cpp \
-    frmcalendar.cpp
+    frmcalendar.cpp \
+    connectiondb.cpp
 
 HEADERS  += mainwindow.h \
     frmtimer.h \
@@ -47,7 +48,8 @@ HEADERS  += mainwindow.h \
     timerwatercontrol.h \
     frmopennow.h \
     opennow.h \
-    frmcalendar.h
+    frmcalendar.h \
+    connectiondb.h
 
 FORMS    += mainwindow.ui \
     frmtimer.ui \

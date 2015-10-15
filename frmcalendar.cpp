@@ -6,6 +6,7 @@ frmCalendar::frmCalendar(QWidget *parent) :
     ui(new Ui::frmCalendar)
 {
     ui->setupUi(this);
+    //qDebug()<<"aaa";
 }
 
 frmCalendar::~frmCalendar()
