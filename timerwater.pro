@@ -11,7 +11,10 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = timerwater
 TEMPLATE = app
 
-
+QT           += sql
+QTPLUGIN += QSQLMYSQL
+INCLUDEPATH += /usr/include/mysql
+INCLUDEPATH += /opt/Qt/Tools/QtCreator/bin/plugins/sqldrivers
 SOURCES += main.cpp\
         mainwindow.cpp \
     frmtimer.cpp \

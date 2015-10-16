@@ -29,6 +29,7 @@ Dialog::Dialog(QWidget *parent) :
             fclose(file);
         }
     }
+    //conn = ConnectionDB();
 }
 
 Dialog::~Dialog()
@@ -149,4 +150,13 @@ void Dialog::on_pushButton_3_clicked()
 
       fclose(file);
 
+}
+
+void Dialog::on_pushButton_4_clicked()
+{
+    QSqlQuery aa = conn.selectData("Select * from t_device Where device_id = '10002'");
+    while(aa.next()){
+        ui->tw->insertRow(ui->tw->rowCount());
+
+    }
 }

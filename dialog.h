@@ -8,6 +8,8 @@
 //#include <linux/i2c-dev.h>
 #include <QThread>
 #include <QDialog>
+#include <connectiondb.h>
+#include <QSqlQuery>
 
 namespace Ui {
 class Dialog;
@@ -28,9 +30,11 @@ private slots:
 
     void on_pushButton_3_clicked();
 
+    void on_pushButton_4_clicked();
+
 private:
     Ui::Dialog *ui;
-
+    ConnectionDB conn;
 };
 
 #endif // DIALOG_H
