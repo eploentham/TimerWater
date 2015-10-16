@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -15,6 +15,8 @@ QT           += sql
 QTPLUGIN += QSQLMYSQL
 INCLUDEPATH += /usr/include/mysql
 INCLUDEPATH += /opt/Qt/Tools/QtCreator/bin/plugins/sqldrivers
+QMAKE_LIBDIR += /opt/Qt/Tools/QtCreator/bin/plugins/sqldrivers
+
 SOURCES += main.cpp\
         mainwindow.cpp \
     frmtimer.cpp \

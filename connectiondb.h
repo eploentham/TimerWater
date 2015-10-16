@@ -6,6 +6,7 @@
 #include <QtSql/QSqlQuery>
 #include <QtSql/QSqlDriver>
 #include <QSqlError>
+#include <QtSql>
 class ConnectionDB
 {
 public:

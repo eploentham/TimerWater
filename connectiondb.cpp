@@ -3,6 +3,7 @@
 #include <QtSql/QSqlDatabase>
 #include <QtSql/QSqlDriver>
 #include <QMessageBox>
+#include <qsqldatabase.h>
 ConnectionDB::ConnectionDB()
 {
     //db = QSqlDatabase::addDatabase("QMYSQL");
@@ -11,7 +12,7 @@ ConnectionDB::ConnectionDB()
 
 bool ConnectionDB::openConnection()
 {
-    db = QSqlDatabase::addDatabase("");
+    db = QSqlDatabase::addDatabase("QMYSQL");
     db.setHostName("172.25.4.69");
     db.setDatabaseName("testtimerwater");
     db.setUserName("root");
