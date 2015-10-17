@@ -16,7 +16,7 @@ public:
     //QVector <Timer> tim1;
     //void refreshTim1Active();
 private :
-    QString fileIni;
+    //QString fileIni;
     //QString mapDay(QString day);
 };
 

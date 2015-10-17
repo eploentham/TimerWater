@@ -1,6 +1,6 @@
 #include "timerwatercontrol.h"
 #include <QDebug>
-#include <QSettings>
+
 /**
  * @brief TimerWaterControl::TimerWaterControl
  * @param path
@@ -309,6 +309,7 @@ void TimerWaterControl::initGPIO(QString port){
     }
     file = NULL;
 }
+
 QString TimerWaterControl::openGPIO(QString port)
 {
     QString chk="OK";
@@ -343,4 +344,63 @@ QString TimerWaterControl::closeGPIO(QString port)
         chk=" closeGPIO "+port+" ok";
     }
     return chk;
+}
+Sensor TimerWaterControl::readSettingSensor(int row)
+{
+    QSettings ss(fileIni, QSettings::IniFormat);
+    Sensor sen;
+    //QSettings ss(fileIni, QSettings::IniFormat);
+    //qDebug() << "readSettingsTimer "+QString::number(row);
+    ss.beginGroup("Sensor"+QString::number(row));
+
+    ss.value("active").toString()=="on" ? sen.Active="1":sen.Active="0";
+
+    sen.Brand = ss.value("brand").toString();
+    sen.Description = ss.value("description").toString();
+    sen.Id = ss.value("id").toString();
+    sen.Max1 = ss.value("max").toString();
+    sen.Min1 = ss.value("min").toString();
+    sen.Model = ss.value("model").toString();
+    sen.TSensor = ss.value("tsensor").toString();
+    sen.PortFaucet = ss.value("portfaucet").toString();
+    sen.PortPump = ss.value("portpump").toString();
+    sen.PortSensor = ss.value("portsensor").toString();
+    sen.IPnodeMCU = ss.value("ipnodemcu").toString();
+
+    ss.value("statuspumpnodemcu").toString()=="on" ? sen.StatusPumpnodeMCU="1":sen.StatusPumpnodeMCU="0";
+    ss.value("statusfaucetnodemcu").toString()=="on" ? sen.StatusFaucetnodeMCU="1":sen.StatusFaucetnodeMCU="0";
+    sen.IPFaucetnodeMCU = ss.value("ipfaucetnodemcu").toString();
+    sen.IPPumpnodeMCU = ss.value("ippumpnodemcu").toString();
+
+    ss.endGroup();
+    return sen;
+}
+
+void TimerWaterControl::writeSettingSensor(int row, Sensor p)
+{
+    QSettings ss(fileIni, QSettings::IniFormat);
+    ss.beginGroup("Sensor"+QString::number(row));
+
+    ss.setValue("description",p.Description);
+    ss.setValue("active",p.Active);
+
+    ss.setValue("brand",p.Brand);
+    ss.setValue("id",p.Id);
+    ss.setValue("max",p.Max1);
+    ss.setValue("min",p.Min1);
+
+    ss.setValue("model",p.Model);
+    ss.setValue("tsensor",p.TSensor);
+    ss.setValue("portfaucet",p.PortFaucet);
+    ss.setValue("portpump",p.PortPump);
+    ss.setValue("portsensor",p.PortSensor);
+    ss.setValue("ipnodemcu",p.IPnodeMCU);
+
+    ss.setValue("statusfaucetnodemcu",p.StatusFaucetnodeMCU);
+    ss.setValue("statuspumpnodemcu",p.StatusPumpnodeMCU);
+    ss.setValue("ipfaucetnodemcu",p.IPFaucetnodeMCU);
+    ss.setValue("ippumpnodemcu",p.IPPumpnodeMCU);
+
+    qDebug() << "writeSettingSensor ";
+    ss.endGroup();
 }

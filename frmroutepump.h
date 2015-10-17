@@ -15,6 +15,9 @@ public:
     explicit frmroutepump(QWidget *parent = 0);
     ~frmroutepump();
 
+private slots:
+    void on_btnSave_clicked();
+
 private:
     Ui::frmroutepump *ui;
 };

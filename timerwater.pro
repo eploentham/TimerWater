@@ -35,7 +35,9 @@ SOURCES += main.cpp\
     frmopennow.cpp \
     opennow.cpp \
     frmcalendar.cpp \
-    connectiondb.cpp
+    connectiondb.cpp \
+    sensor.cpp \
+    frmnodemcu.cpp
 
 HEADERS  += mainwindow.h \
     frmtimer.h \
@@ -54,7 +56,9 @@ HEADERS  += mainwindow.h \
     frmopennow.h \
     opennow.h \
     frmcalendar.h \
-    connectiondb.h
+    connectiondb.h \
+    sensor.h \
+    frmnodemcu.h
 
 FORMS    += mainwindow.ui \
     frmtimer.ui \
@@ -68,4 +72,5 @@ FORMS    += mainwindow.ui \
     frmsensor1.ui \
     frmstartwork.ui \
     frmopennow.ui \
-    frmcalendar.ui
+    frmcalendar.ui \
+    frmnodemcu.ui

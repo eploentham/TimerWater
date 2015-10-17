@@ -2,7 +2,8 @@
 #define FRMSENSOR1_H
 
 #include <QDialog>
-
+#include <timerwatercontrol.h>
+#include <QDebug>
 namespace Ui {
 class frmsensor1;
 }
@@ -15,9 +16,25 @@ public:
     explicit frmsensor1(QWidget *parent = 0);
     ~frmsensor1();
 
+private slots:
+    void on_btnSave_clicked();
+
+    void on_cboSensor_currentIndexChanged(int index);
+
+    void on_cboTSensor_currentIndexChanged(int index);
+
+    void on_chkStatusPumpnodeMCU_clicked(bool checked);
+
+    void on_chkStatusFaucetnodeMCU_clicked(bool checked);
+
 private:
     Ui::frmsensor1 *ui;
+    TimerWaterControl *twc;
+    bool isNew=true;
     void writeSettings();
+    void writeSettingSensor();
+    void readSettingSensor(int row);
+    void genId();
 };
 
 #endif // FRMSENSOR1_H
