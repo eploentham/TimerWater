@@ -12,10 +12,7 @@ TARGET = timerwater
 TEMPLATE = app
 
 QT           += sql
-QTPLUGIN += QSQLMYSQL
-INCLUDEPATH += /usr/include/mysql
-INCLUDEPATH += /opt/Qt/Tools/QtCreator/bin/plugins/sqldrivers
-QMAKE_LIBDIR += /opt/Qt/Tools/QtCreator/bin/plugins/sqldrivers
+//QTPLUGIN += QSQLMYSQL
 
 SOURCES += main.cpp\
         mainwindow.cpp \

@@ -154,9 +154,9 @@ void Dialog::on_pushButton_3_clicked()
 
 void Dialog::on_pushButton_4_clicked()
 {
-    QSqlQuery aa = conn.selectData("Select * from t_device Where device_id = '10002'");
-    while(aa.next()){
-        ui->tw->insertRow(ui->tw->rowCount());
+    //QSqlQuery aa = conn.selectData("Select * from t_device Where device_id = '10002'");
+    //while(aa.next()){
+    //    ui->tw->insertRow(ui->tw->rowCount());
 
-    }
+    //}
 }
