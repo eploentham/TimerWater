@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-import os
+import os,sys
 import cgi, cgitb
 import ConfigParser
 from datetime import datetime
@@ -12,6 +12,8 @@ form = cgi.FieldStorage()
 devi1 = form.getvalue('devi1')
 nodemcuid = form.getvalue('nodemcuid')
 val1 = form.getvalue('val1')
+path="/usr/lib/cgi-bin/"
+fileini='/home/pi/timerwater-build-desktop-Qt_4_8_2__System__Release/timerwater.ini'
 #devi = escape(devi)
 #val1 = escape(val1)
 #date=datetime.now().strftime('%Y-%m-%d %H:%M:%S')
@@ -20,66 +22,77 @@ val1 = form.getvalue('val1')
 try:
         f = open('/usr/lib/cgi-bin/temp5.io', 'w')
 #f.write(str(devi1)+","+str(date)+","+str(val1))
-        f.write(str(devi1)+","+str(val1))
+        f.write(str(devi1)+","+str(val1)+","+str(nodemcuid))
         f.close()
 #t_device (id varchar(255), device_id varchar(255), device_type varchar(255), d$
 #       curs.execute("INSERT into t_device values("+id+","+ devi+","+devt+", no$
-        config = ConfigParser.ConfigParser()
-        config.read('/home/ekapop/build-timerwater-Desktop_Qt_5_5_0_GCC_64bit-Debug/timerwater.ini')
+	config = ConfigParser.ConfigParser()
+	if(not os.path.isfile(fileini)):
+		print "sss"
+
+	config.read(fileini)
         ipfaucetnodemcu = config.get(devi1,'ipfaucetnodemcu')
         ippumpnodemcu = config.get(devi1,'ippumpnodemcu')
         portfaucet = config.get(devi1,'portfaucet')
         portpump = config.get(devi1,'portpump')
         max1 = config.get(devi1,'max')
         min1 = config.get(devi1,'min')
-
-        if(not(ipfaucetnodemcu=="")&(ippumpnodemcu=="")):
-            if(ipfaucetnodemcu==ippumpnodemcu):
-                f = open(ipfaucetnodemcu+".io", 'w')
-                if(int(val1)>=max1):
-                    f.write(portfaucet+",ON")
-                    f.write(portpump+",ON")
-                else:
-                    f.write(portfaucet+",OFF")
-                    f.write(portpump+",OFF")
-                f.close()
-            else:
-                f = open(ipfaucetnodemcu+".io", 'w')
-                if(int(val1)>=max1):
-                    f.write(portfaucet+",ON")
-                else:
-                    f.write(portfaucet+",OFF")
-                f.close()
-                f = open(ippumpnodemcu+".io", 'w')
-                if(int(val1)>=max1):
-                    f.write(portpump+",ON")
-                else:
-                    f.write(portpump+",OFF")
-                f.close()
-            
-        if(ippumpnodemcu!=""):
-            f = open(ippumpnodemcu+".io", 'w')
-            if(int(val1)>=max1):
-                f.write(portpump+",ON")
-            else:
-                f.write(portpump+",OFF")
-            f.close()
-        if(ipfaucetnodemcu!=""):
-            f = open(ipfaucetnodemcu+".io", 'w')
-            if(int(val1)>=max1):
-                f.write(portfaucet+",ON")
-            else:
-                f.write(portfaucet+",OFF")
-            f.close()
-        if(os.path.isfile(nodemcuid+".io")):
-                f = open(nodemcuid+".io", 'r')
-                aaa = f.readline()
-                bbb = aaa.split(',')
-                f.close()
+	
+	chk="-"
+        if not(ipfaucetnodemcu=='') & (ippumpnodemcu==""):
+		chk="ipfaucetnodemcu"
+		if(ipfaucetnodemcu==ippumpnodemcu):
+                	f = open(ipfaucetnodemcu+".io", 'w')
+                	if int(val1)>=int(max1):
+                    		f.write(portfaucet+",ON\n")
+                    		f.write(portpump+",ON\n")
+                	else:
+                    		f.write(portfaucet+",OFF\n")
+                    		f.write(portpump+",OFF\n")
+                	f.close()
+            	else:
+                	f = open(ipfaucetnodemcu+".io", 'w')
+                	if int(val1)>=int(max1):
+                    		f.write(portfaucet+",ON\n")
+                	else:
+                    		f.write(portfaucet+",OFF\n")
+			f.close()
+			f = open(ippumpnodemcu+".io", 'w')
+			if int(val1)>=int(max1):
+				f.write(portpump+",ON\n")
+			else:
+				f.write(portpump+",OFF\n")
+			f.close()
+#	ippumpnodemcu=''
+#	ipfaucetnodemcu=''
+	if not ippumpnodemcu:
+		f = open(ippumpnodemcu+".io", 'w')
+		if int(val1)>=int(max1):
+			f.write(portpump+",ON\n")
+		else:
+			f.write(portpump+",OFF\n")
+		f.close()
+	if not ipfaucetnodemcu:
+		f = open(ipfaucetnodemcu+".io", 'w')
+		if int(val1)>=int(max1):
+			f.write(portfaucet+",ON\n")
+		else:
+			f.write(portfaucet+",OFF\n")
+		f.close()
+	aaa="-"
+	bbbb=""
+	if(os.path.isfile(nodemcuid+".io")):
+		f = open(nodemcuid+".io", 'r')
+		for aaa in f:
+#		aaa = f.readlines()
+			bbb = aaa.split(',')
+			bbbb+=bbb[0]+","+bbb[1]+";"
+		f.close()
 
         #if(int(val1)>80): val1="ON"
         #else: val1="OFF"
-        result = "<html><head>Content-Type: text/html; charset=UTF-8\n\n[("+str(devi1)+","+str(val1)+";)]"
+#        result = "<html><head>Content-Type: text/html; charset=UTF-8\n\n[("+str(bbb[0])+","+str(bbb[1])+";)]"
+        result = "<html><head>Content-Type: text/html; charset=UTF-8\n\n[("+str(bbbb)+")]"
 #       header = "Content-Type: text/html; charset=UTF-8\n\n"
 #       result "Hello World  "+str(devi1)+","+str(val1)
         print result
@@ -96,4 +109,5 @@ except:
         print "Error id "+id
 # disconnect from server
 #db.close()
+
 
