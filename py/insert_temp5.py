@@ -24,8 +24,13 @@ fileini='/home/pi/timerwater-build-desktop-Qt_4_8_2__System__Release/timerwater.
 try:
 	f = open('/usr/lib/cgi-bin/temp5.io', 'w')
 #f.write(str(devi1)+","+str(date)+","+str(val1))
+<<<<<<< HEAD
 	f.write(str(devi1)+","+str(val1)+","+str(nodemcuid))
 	f.close()
+=======
+        f.write(str(devi1)+","+str(val1)+","+str(nodemcuid))
+        f.close()
+>>>>>>> origin/master
 #t_device (id varchar(255), device_id varchar(255), device_type varchar(255), d$
 #       curs.execute("INSERT into t_device values("+id+","+ devi+","+devt+", no$
 	config = ConfigParser.ConfigParser()
@@ -33,6 +38,7 @@ try:
 		print "sss"
 
 	config.read(fileini)
+<<<<<<< HEAD
 	ipfaucetnodemcu = config.get(devi1,'ipfaucetnodemcu')
 	ippumpnodemcu = config.get(devi1,'ippumpnodemcu')
 	portfaucet = config.get(devi1,'portfaucet')
@@ -71,6 +77,33 @@ try:
 				f.write(portfaucet+",ON\n")
 			else:
 				f.write(portfaucet+",OFF\n")
+=======
+        ipfaucetnodemcu = config.get(devi1,'ipfaucetnodemcu')
+        ippumpnodemcu = config.get(devi1,'ippumpnodemcu')
+        portfaucet = config.get(devi1,'portfaucet')
+        portpump = config.get(devi1,'portpump')
+        max1 = config.get(devi1,'max')
+        min1 = config.get(devi1,'min')
+	
+	chk="-"
+        if not(ipfaucetnodemcu=='') & (ippumpnodemcu==""):
+		chk="ipfaucetnodemcu"
+		if(ipfaucetnodemcu==ippumpnodemcu):
+                	f = open(ipfaucetnodemcu+".io", 'w')
+                	if int(val1)>=int(max1):
+                    		f.write(portfaucet+",ON\n")
+                    		f.write(portpump+",ON\n")
+                	else:
+                    		f.write(portfaucet+",OFF\n")
+                    		f.write(portpump+",OFF\n")
+                	f.close()
+            	else:
+                	f = open(ipfaucetnodemcu+".io", 'w')
+                	if int(val1)>=int(max1):
+                    		f.write(portfaucet+",ON\n")
+                	else:
+                    		f.write(portfaucet+",OFF\n")
+>>>>>>> origin/master
 			f.close()
 			f = open(ippumpnodemcu+".io", 'w')
 			if int(val1)>=int(max1):
@@ -97,7 +130,10 @@ try:
 	aaa="-"
 	bbbb=""
 	if(os.path.isfile(nodemcuid+".io")):
+<<<<<<< HEAD
 #		chk="nodemcuid";
+=======
+>>>>>>> origin/master
 		f = open(nodemcuid+".io", 'r')
 		for aaa in f:
 #		aaa = f.readlines()
@@ -107,9 +143,14 @@ try:
 
         #if(int(val1)>80): val1="ON"
         #else: val1="OFF"
+<<<<<<< HEAD
 #        result = "<html><head>Content-Type: text/html; charset=UTF-8\n\n[("+str(bbb[0])+";)]"
 	result = "<html><head>Content-Type: text/html; charset=UTF-8\n\n[("+str(bbbb)+")]"
 #	result = "<html><head>Content-Type: text/html; charset=UTF-8\n\n[("+str(nodemcuid)+")]"
+=======
+#        result = "<html><head>Content-Type: text/html; charset=UTF-8\n\n[("+str(bbb[0])+","+str(bbb[1])+";)]"
+        result = "<html><head>Content-Type: text/html; charset=UTF-8\n\n[("+str(bbbb)+")]"
+>>>>>>> origin/master
 #       header = "Content-Type: text/html; charset=UTF-8\n\n"
 #       result "Hello World  "+str(devi1)+","+str(val1)
         print result

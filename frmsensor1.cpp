@@ -37,8 +37,8 @@ frmsensor1::frmsensor1(QWidget *parent) :
     ui->cboSensor->addItem("Sensor 28", QVariant(20));
     ui->cboSensor->addItem("Sensor 29", QVariant(20));
 
-    ui->cboTSensor->addItem("วัดระยะ หน่วยเป็น cm", QVariant(20));
-    ui->cboTSensor->addItem("วัดวามชื่น ในดิน", QVariant(20));
+    ui->cboTSensor->addItem("Distance cm", QVariant(20));
+    ui->cboTSensor->addItem("Mem Soil", QVariant(20));
 
     ui->cboBrand->addItem("Catalex", QVariant(20));
     ui->cboBrand->addItem("JSN", QVariant(20));

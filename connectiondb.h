@@ -11,9 +11,9 @@ class ConnectionDB
 {
 public:
     ConnectionDB();
-    QSqlDatabase db;
-    bool openConnection();
-    QSqlQuery selectData(QString sql);
+    //QSqlDatabase db;
+    //bool openConnection();
+    //QSqlQuery selectData(QString sql);
 };
 
 #endif // CONNECTION_H

@@ -30,7 +30,7 @@ private slots:
 private:
     Ui::frmsensor1 *ui;
     TimerWaterControl *twc;
-    bool isNew=true;
+    bool isNew;
     void writeSettings();
     void writeSettingSensor();
     void readSettingSensor(int row);
