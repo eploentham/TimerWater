@@ -3,7 +3,7 @@
 #include <QtSql/QSqlDatabase>
 #include <QtSql/QSqlDriver>
 #include <QMessageBox>
-#include <qsqldatabase.h>
+//#include <qsqldatabase.h>
 ConnectionDB::ConnectionDB()
 {
     //db = QSqlDatabase::addDatabase("QMYSQL");

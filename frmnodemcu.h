@@ -2,21 +2,32 @@
 #define FRMNODEMCU_H
 
 #include <QDialog>
+#include <timerwatercontrol.h>
+#include <QDebug>
 
 namespace Ui {
-class frmNodeMCU;
+class frmnodeMCU;
 }
 
-class frmNodeMCU : public QDialog
+class frmnodeMCU : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit frmNodeMCU(QWidget *parent = 0);
-    ~frmNodeMCU();
+    explicit frmnodeMCU(QWidget *parent = 0);
+    ~frmnodeMCU();
+
+private slots:
+    void on_btnSave_clicked();
+
+    void on_cbonodeMCU_currentIndexChanged(int index);
 
 private:
-    Ui::frmNodeMCU *ui;
+    Ui::frmnodeMCU *ui;
+    TimerWaterControl *twc;
+    void writeSettingnodeMCU();
+    void readSettingnodeMCU(int row);
+    void genId();
 };
 
 #endif // FRMNODEMCU_H

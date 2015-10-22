@@ -9,7 +9,7 @@
 #include <QThread>
 #include <QDialog>
 #include <connectiondb.h>
-#include <QSqlQuery>
+//#include <QSqlQuery>
 
 namespace Ui {
 class Dialog;

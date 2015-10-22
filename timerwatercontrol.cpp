@@ -404,3 +404,71 @@ void TimerWaterControl::writeSettingSensor(int row, Sensor p)
     qDebug() << "writeSettingSensor ";
     ss.endGroup();
 }
+nodeMCU TimerWaterControl::readSettingnodeMCU(int row)
+{
+    QSettings ss(fileIni, QSettings::IniFormat);
+    nodeMCU mcu;
+    //QSettings ss(fileIni, QSettings::IniFormat);
+    //qDebug() << "readSettingsTimer "+QString::number(row);
+    ss.beginGroup("nodemcu"+QString::number(row));
+
+    //ss.value("active").toString()=="on" ? sen.Active="1":sen.Active="0";
+
+    mcu.Control1 = ss.value("control1").toString();
+    mcu.Control2 = ss.value("control2").toString();
+    mcu.Control3 = ss.value("control3").toString();
+    mcu.Control4 = ss.value("control4").toString();
+    mcu.Control5 = ss.value("control5").toString();
+    mcu.ControlPort1 = ss.value("controlport1").toString();
+    mcu.ControlPort2 = ss.value("controlport2").toString();
+    mcu.ControlPort3 = ss.value("controlport3").toString();
+    mcu.ControlPort4 = ss.value("controlport4").toString();
+    mcu.ControlPort5 = ss.value("controlport5").toString();
+    mcu.Id = ss.value("id").toString();
+    mcu.Sensor1 = ss.value("sensor1").toString();
+    mcu.Sensor2 = ss.value("sensor2").toString();
+    mcu.Sensor3 = ss.value("sensor3").toString();
+    mcu.Sensor4 = ss.value("sensor4").toString();
+    mcu.Sensor5 = ss.value("sensor5").toString();
+    mcu.SensorPort1 = ss.value("sensorport1").toString();
+    mcu.SensorPort2 = ss.value("sensorport2").toString();
+    mcu.SensorPort3 = ss.value("sensorport3").toString();
+    mcu.SensorPort4 = ss.value("sensorport4").toString();
+    mcu.SensorPort5 = ss.value("sensorport5").toString();
+    mcu.Description = ss.value("description").toString();
+
+    ss.endGroup();
+    return mcu;
+}
+void TimerWaterControl::writeSettingnodeMCU(int row, nodeMCU p)
+{
+    QSettings ss(fileIni, QSettings::IniFormat);
+    ss.beginGroup("nodemcu"+QString::number(row));
+
+    ss.setValue("control1",p.Control1);
+    ss.setValue("control2",p.Control2);
+    ss.setValue("control3",p.Control3);
+    ss.setValue("control4",p.Control4);
+    ss.setValue("control5",p.Control5);
+    ss.setValue("id",p.Id);
+    ss.setValue("controlport1",p.ControlPort1);
+    ss.setValue("controlport2",p.ControlPort2);
+    ss.setValue("controlport3",p.ControlPort3);
+    ss.setValue("controlport4",p.ControlPort4);
+    ss.setValue("controlport5",p.ControlPort5);
+
+    ss.setValue("sensor1",p.Sensor1);
+    ss.setValue("sensor2",p.Sensor2);
+    ss.setValue("sensor3",p.Sensor3);
+    ss.setValue("sensor4",p.Sensor4);
+    ss.setValue("sensor5",p.Sensor5);
+    ss.setValue("sensorport1",p.SensorPort1);
+    ss.setValue("sensorport2",p.SensorPort2);
+    ss.setValue("sensorport3",p.SensorPort3);
+    ss.setValue("sensorport4",p.SensorPort4);
+    ss.setValue("sensorport5",p.SensorPort5);
+    ss.setValue("description",p.Description);
+
+    qDebug() << "writeSettingnodeMCU ";
+    ss.endGroup();
+}

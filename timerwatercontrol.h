@@ -5,11 +5,13 @@
 #include <timer.h>
 #include <opennow.h>
 #include <sensor.h>
+#include <nodemcu.h>
 class TimerWaterControl
 {
 public:
     Timer *tim;
     Sensor *sen;
+    nodeMCU *mcu;
     QList <Timer> tim1;
     QList <Sensor> sen1;
 
@@ -31,6 +33,9 @@ public:
     //Sensor
     Sensor readSettingSensor(int row);
     void writeSettingSensor(int row, Sensor p);
+    //nodeMCU
+    nodeMCU readSettingnodeMCU(int row);
+    void writeSettingnodeMCU(int row, nodeMCU p);
 
 private:
     QString fileIni;

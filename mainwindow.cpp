@@ -10,13 +10,14 @@
 #include <QDebug>
 #include <QDesktopWidget>
 #include <frmcalendar.h>
+#include <frmnodemcu.h>
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
     twc = new TimerWaterControl(QApplication::applicationDirPath());
-    this->setWindowTitle("Last Update 58-10-06");
+    this->setWindowTitle("Last Update 58-10-22");
     //mainWindow->show();
 
 }
@@ -73,6 +74,12 @@ void MainWindow::on_pushButton_5_clicked()
 void MainWindow::on_btnCalendar_clicked()
 {
     frmCalendar f;
+    f.setModal(true);
+    f.exec();
+}
+void MainWindow::on_btnnodeMCU_clicked()
+{
+    frmnodeMCU f;
     f.setModal(true);
     f.exec();
 }

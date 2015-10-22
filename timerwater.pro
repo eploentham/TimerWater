@@ -4,15 +4,12 @@
 #
 #-------------------------------------------------
 
-QT       += core gui sql
+QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = timerwater
 TEMPLATE = app
-
-QT           += sql
-//QTPLUGIN += QSQLMYSQL
 
 SOURCES += main.cpp\
         mainwindow.cpp \
@@ -34,7 +31,8 @@ SOURCES += main.cpp\
     frmcalendar.cpp \
     connectiondb.cpp \
     sensor.cpp \
-    frmnodemcu.cpp
+    frmnodemcu.cpp \
+    nodemcu.cpp
 
 HEADERS  += mainwindow.h \
     frmtimer.h \
@@ -55,7 +53,8 @@ HEADERS  += mainwindow.h \
     frmcalendar.h \
     connectiondb.h \
     sensor.h \
-    frmnodemcu.h
+    frmnodemcu.h \
+    nodemcu.h
 
 FORMS    += mainwindow.ui \
     frmtimer.ui \

@@ -2,11 +2,11 @@
 #define CONNECTION_H
 #include <QDebug>
 #include <QtSql/QSqlDatabase>
-#include <QSqlDatabase>
+//#include <QSqlDatabase>
 #include <QtSql/QSqlQuery>
 #include <QtSql/QSqlDriver>
-#include <QSqlError>
-#include <QtSql>
+//#include <QSqlError>
+//#include <QtSql>
 class ConnectionDB
 {
 public:
