@@ -8,6 +8,7 @@ cgitb.enable()
 val1=80
 
 config = ConfigParser.ConfigParser()
+if(os.path.isfile('/home/ekapop/build-timerwater-Desktop_Qt_5_5_0_GCC_64bit-Debug/timerwater.ini')): print "aaa"
 config.read('/home/ekapop/build-timerwater-Desktop_Qt_5_5_0_GCC_64bit-Debug/timerwater.ini')
 ipfaucetnodemcu = config.get('Sensor1','ipfaucetnodemcu')
 ippumpnodemcu = config.get('Sensor1','ippumpnodemcu')

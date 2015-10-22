@@ -28,8 +28,8 @@ const char* host = "172.25.4.69";
 const char* streamId   = "....................";
 const char* privateKey = "....................";
 
-String clientName, command;
-
+String clientName, command, devi1="Sensor1";
+String ipaddress;
 
 String macToStr(const uint8_t* mac)
 {
@@ -68,8 +68,8 @@ void setup() {
 
   // We start by connecting to a WiFi network
 
-  Serial.println();
-  Serial.println();
+  //Serial.println();
+  //Serial.println();
   Serial.print("Connecting to ");
   Serial.println(ssid);
   
@@ -80,10 +80,12 @@ void setup() {
     Serial.print(".");
   }
 
-  Serial.println("");
-  Serial.println("WiFi connected");  
-  Serial.println("IP address: ");
-  Serial.println(WiFi.localIP());
+  //Serial.println("");
+  //Serial.println("WiFi connected");  
+  //Serial.println("IP address: ");
+  //Serial.println(WiFi.localIP());
+  //ipaddress = WiFi.localIP();
+  ipaddress = "nodemcu1";
 
   // Generate client name based on MAC address and last 8 bits of microsecond counter
   
@@ -91,9 +93,9 @@ void setup() {
   uint8_t mac[6];
   WiFi.macAddress(mac);
   clientName += macToStr(mac);
-  clientName += "-";
-  clientName += String(micros() & 0xff, 16);
-  Serial.println("Client name "+clientName);
+  //clientName += "-";
+  //clientName += String(micros() & 0xff, 16);
+  //Serial.println("Client name "+clientName);
 
   pinMode(gpio2, OUTPUT);
   pinMode(gpio4, OUTPUT);
@@ -112,7 +114,7 @@ void loop() {
   if (distance < 4) {  // This is where the LED On/Off happens
     //digitalWrite(led,HIGH); // When the Red condition is met, the Green LED should turn off
   //digitalWrite(led2,LOW);
-}
+  }
   else {
     //digitalWrite(led,LOW);
     //digitalWrite(led2,HIGH);
@@ -143,7 +145,7 @@ void loop() {
   }
   
   // We now create a URI for the request
-  String url = "/cgi-bin/insert_temp5.py?devi1=10002&val1="+String(distance);
+  String url = "/cgi-bin/insert_temp5.py?nodemcuid="+clientName+"&devi1="+devi1+"&val1="+String(distance);
 
   
   Serial.print("Requesting URL: ");
