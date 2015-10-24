@@ -160,3 +160,10 @@ void Dialog::on_pushButton_4_clicked()
 
     //}
 }
+
+void Dialog::on_pushButton_5_clicked()
+{
+    ui->pb1->setMinimum(-99);
+    ui->pb1->setMaximum(-1);
+    ui->pb1->setValue(ui->txtPort->text().toInt());
+}
