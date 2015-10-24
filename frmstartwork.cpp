@@ -47,10 +47,18 @@ frmStartWork::frmStartWork(QWidget *parent) :
     //connect(timer1, SIGNAL(timeout()), this, SLOT(onSetTimerWork()));
 
     //timer1->start(1000);
-
+    Sensor ss1 = twc->readSettingSensor(1);
+    Sensor ss2 = twc->readSettingSensor(2);
+    Sensor ss3 = twc->readSettingSensor(3);
+    Sensor ss4 = twc->readSettingSensor(4);
+    ss1.Max1 != "" ? ui->pb1->setMaximum(ss1.Max1.toInt()):ui->pb1->setMaximum(100);
+    ss2.Max1 != "" ? ui->pb2->setMaximum(ss2.Max1.toInt()):ui->pb2->setMaximum(100);
+    ss1.Min1 != "" ? ui->pb1->setMinimum(ss1.Min1.toInt()):ui->pb1->setMinimum(0);
+    ss2.Min1 != "" ? ui->pb2->setMinimum(ss2.Min1.toInt()):ui->pb1->setMinimum(0);
+    //ui->pb1->setMaximum(ss1.Max1.toInt());
+    //ui->pb2->setMaximum(ss2.Max1.toInt());
 
     onTimerWork();
-
 
     timerwork = new QTimer(this);
     connect(timerwork, SIGNAL(timeout()), this, SLOT(onSetTimerWork()));
@@ -73,6 +81,9 @@ void frmStartWork::onSetTimerWork(){
     if(ss=="00"){
         onTimerWork();
     }
+    QString val = twc->readValueSensor(1);
+    ui->pb1->setValue(val.toInt());
+    qDebug()<<"Sensor1 value="+val;
     //}
 }
 void frmStartWork::onTimerWork(){
@@ -84,6 +95,9 @@ void frmStartWork::onTimerWork(){
     if(chkON.indexOf("failed")){
         chkON = twc->setTimerON(QDateTime::currentDateTime());
     }
+    //QString val = twc->readValueSensor(1);
+    //ui->pb1->setValue(val.toInt());
+    //qDebug()<<"Sensor1 value="+val;
     //if(chkON.Active=="1"){
         ui->txtCurWork1->setText(chkON);
     //    twc->openGPIO("30");

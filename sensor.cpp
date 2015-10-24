@@ -18,5 +18,6 @@ Sensor::Sensor()
     StatusPumpnodeMCU="";
     IPFaucetnodeMCU="";
     IPPumpnodeMCU="";
+    Value="";
 }
 

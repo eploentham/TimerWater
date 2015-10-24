@@ -33,9 +33,12 @@ public:
     //Sensor
     Sensor readSettingSensor(int row);
     void writeSettingSensor(int row, Sensor p);
+    QString readValueSensor(int row);
+
     //nodeMCU
     nodeMCU readSettingnodeMCU(int row);
     void writeSettingnodeMCU(int row, nodeMCU p);
+
 
 private:
     QString fileIni;

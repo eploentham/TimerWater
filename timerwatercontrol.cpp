@@ -1,6 +1,8 @@
 #include "timerwatercontrol.h"
 #include <QDebug>
-
+#include <QFile>
+#include <QStringList>
+#include <QTextStream>
 /**
  * @brief TimerWaterControl::TimerWaterControl
  * @param path
@@ -403,6 +405,27 @@ void TimerWaterControl::writeSettingSensor(int row, Sensor p)
 
     qDebug() << "writeSettingSensor ";
     ss.endGroup();
+}
+
+QString TimerWaterControl::readValueSensor(int row)
+{
+    QString ss;
+    QFile file("/usr/lib/cgi-bin/Sensor"+QString::number(row)+".io");
+    if(!file.open(QIODevice::ReadOnly)) {
+        //QMessageBox::information(0, "error", file.errorString());
+        qDebug()<<"Error read file";
+    }
+
+    QTextStream in(&file);
+
+    while(!in.atEnd()) {
+        QString line = in.readLine();
+        QStringList fields = line.split(",");
+        ss= fields[1];
+    }
+
+    file.close();
+    return ss;
 }
 nodeMCU TimerWaterControl::readSettingnodeMCU(int row)
 {
