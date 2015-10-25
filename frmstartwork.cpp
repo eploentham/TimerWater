@@ -51,13 +51,35 @@ frmStartWork::frmStartWork(QWidget *parent) :
     Sensor ss2 = twc->readSettingSensor(2);
     Sensor ss3 = twc->readSettingSensor(3);
     Sensor ss4 = twc->readSettingSensor(4);
-    ss1.Max1 != "" ? ui->pb1->setMaximum(ss1.Max1.toInt()):ui->pb1->setMaximum(100);
-    ss2.Max1 != "" ? ui->pb2->setMaximum(ss2.Max1.toInt()):ui->pb2->setMaximum(100);
-    ss1.Min1 != "" ? ui->pb1->setMinimum(ss1.Min1.toInt()):ui->pb1->setMinimum(0);
-    ss2.Min1 != "" ? ui->pb2->setMinimum(ss2.Min1.toInt()):ui->pb1->setMinimum(0);
-    //ui->pb1->setMaximum(ss1.Max1.toInt());
-    //ui->pb2->setMaximum(ss2.Max1.toInt());
-
+    ss1.Max1 != "" ? ui->pb1->setMinimum(-ss1.Max1.toInt()):ui->pb1->setMinimum(-100);
+    ss2.Max1 != "" ? ui->pb2->setMinimum(-ss2.Max1.toInt()):ui->pb2->setMinimum(-100);
+    ss1.Min1 != "" ? ui->pb1->setMaximum(-ss1.Min1.toInt()):ui->pb1->setMaximum(0);
+    ss2.Min1 != "" ? ui->pb2->setMaximum(-ss2.Min1.toInt()):ui->pb1->setMaximum(0);
+    ss3.Max1 != "" ? ui->pb3->setMinimum(-ss3.Max1.toInt()):ui->pb3->setMinimum(-100);
+    ss4.Max1 != "" ? ui->pb4->setMinimum(-ss4.Max1.toInt()):ui->pb4->setMinimum(-100);
+    ss3.Min1 != "" ? ui->pb3->setMaximum(-ss3.Min1.toInt()):ui->pb3->setMaximum(0);
+    ss4.Min1 != "" ? ui->pb4->setMaximum(-ss4.Min1.toInt()):ui->pb4->setMaximum(0);
+    ui->pb1->setToolTip(ss1.Description);
+    ui->pb2->setToolTip(ss2.Description);
+    ui->pb3->setToolTip(ss3.Description);
+    ui->pb4->setToolTip(ss4.Description);
+    qDebug()<<"ss1.Active" +ss1.Active;
+    if(ss1.Active=="1"){
+        tmp = ss1.Description+" ระดับปิด "+ss1.Min1+" ระดับเปิด "+ss1.Max1+" IP nodeMCU "+ss1.IPnodeMCU;
+        ui->lvSensor->addItem(tmp);
+    }
+    if(ss2.Active=="1"){
+        tmp = ss2.Description+" ระดับปิด "+ss2.Min1+" ระดับเปิด "+ss2.Max1+" IP nodeMCU "+ss2.IPnodeMCU;
+        ui->lvSensor->addItem(tmp);
+    }
+    if(ss3.Active=="1"){
+        tmp = ss3.Description+" ระดับปิด "+ss3.Min1+" ระดับเปิด "+ss3.Max1+" IP nodeMCU "+ss3.IPnodeMCU;
+        ui->lvSensor->addItem(tmp);
+    }
+    if(ss4.Active=="1"){
+        tmp = ss4.Description+" ระดับปิด "+ss4.Min1+" ระดับเปิด "+ss4.Max1+" IP nodeMCU "+ss4.IPnodeMCU;
+        ui->lvSensor->addItem(tmp);
+    }
     onTimerWork();
 
     timerwork = new QTimer(this);
