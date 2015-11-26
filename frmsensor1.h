@@ -27,14 +27,17 @@ private slots:
 
     void on_chkStatusFaucetnodeMCU_clicked(bool checked);
 
+    void on_chkValueOnOff_clicked(bool checked);
+
 private:
     Ui::frmsensor1 *ui;
     TimerWaterControl *twc;
-    bool isNew;
+    bool isNew, pageLoad;
     void writeSettings();
     void writeSettingSensor();
     void readSettingSensor(int row);
     void genId();
+    void setChkOnOff(bool chk);
 };
 
 #endif // FRMSENSOR1_H

@@ -5,6 +5,7 @@ frmsensor1::frmsensor1(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::frmsensor1)
 {
+    pageLoad =false;
     ui->setupUi(this);
     twc = new TimerWaterControl(QApplication::applicationDirPath());
     ui->cboSensor->addItem("Sensor 1", QVariant(1));
@@ -38,7 +39,10 @@ frmsensor1::frmsensor1(QWidget *parent) :
     ui->cboSensor->addItem("Sensor 29", QVariant(20));
 
     ui->cboTSensor->addItem("Distance cm", QVariant(20));
-    ui->cboTSensor->addItem("Mem Soil", QVariant(20));
+    ui->cboTSensor->addItem("Moisture Soil", QVariant(20));
+    ui->cboTSensor->addItem("Light", QVariant(20));
+    ui->cboTSensor->addItem("Tempurature", QVariant(20));
+    ui->cboTSensor->addItem("Rain", QVariant(20));
 
     ui->cboBrand->addItem("Catalex", QVariant(20));
     ui->cboBrand->addItem("JSN", QVariant(20));
@@ -47,6 +51,8 @@ frmsensor1::frmsensor1(QWidget *parent) :
     ui->cboModel->addItem("Catalex Moisture Sensor", QVariant(20));
     ui->cboModel->addItem("JSN-SR04T", QVariant(20));
     ui->cboModel->addItem("HC-SR04", QVariant(20));
+    pageLoad=true;
+    readSettingSensor(1);
 }
 
 frmsensor1::~frmsensor1()
@@ -83,6 +89,9 @@ void frmsensor1::writeSettingSensor()
     sen.PortFaucet = ui->txtPort->text();
     sen.PortPump = ui->txtPortPump->text();
     sen.PortSensor = ui->txtPortSensor->text();
+    ui->chkValueOnOff->isChecked() ? sen.StatusValueOn="on":sen.StatusValueOn="off";
+    sen.ValueOff = QString::number(ui->doubleSpinBoxOff->value());
+    sen.ValueOn = QString::number(ui->doubleSpinBoxOn->value());
 
     twc->writeSettingSensor((ui->cboSensor->currentIndex()+1),sen);
 }
@@ -107,9 +116,24 @@ void frmsensor1::readSettingSensor(int row)
        ui->cboModel->setCurrentIndex(index);
     }
     index = ui->cboTSensor->findText(sen.TSensor);
-    if ( index != -1 ) { // -1 for not found
-       ui->cboTSensor->setCurrentIndex(index);
-    }
+    //if ( index != -1 ) { // -1 for not found
+    //   ui->cboTSensor->setCurrentIndex(index);
+    //}
+    //index != -1?ui->cboTSensor->setCurrentIndex(index):ui->cboTSensor->setCurrentIndex(0);
+
+    ui->gbDistance->setVisible(false);
+    ui->gbMoisture->setVisible(false);
+    ui->gbLight->setVisible(false);
+    ui->gbTempu->setVisible(false);
+    ui->gbRain->setVisible(false);
+
+    //setChkOnOff(false);
+    index ==0?ui->gbDistance->setVisible(true):ui->gbDistance->setVisible(false);
+    index ==1?ui->gbMoisture->setVisible(true):ui->gbMoisture->setVisible(false);
+    index ==2?ui->gbLight->setVisible(true):ui->gbLight->setVisible(false);
+    index ==3?ui->gbTempu->setVisible(true):ui->gbTempu->setVisible(false);
+    index ==2?ui->gbRain->setVisible(true):ui->gbRain->setVisible(false);
+
     ui->txtId->setText(sen.Id);
 
     ui->doubleSpinBoxMax->setValue(sen.Max1.toInt());
@@ -127,6 +151,11 @@ void frmsensor1::readSettingSensor(int row)
     ui->txtPortSensor->setText(sen.PortSensor);
     ui->txtIPnodeMCU->setText(sen.IPnodeMCU);
     sen.Id=="" ? isNew=true:isNew=false;
+    sen.StatusValueOn=="1"?ui->chkValueOnOff->setChecked(true):ui->chkValueOnOff->setChecked(false);
+    ui->chkValueOnOff->isChecked() ? setChkOnOff(true):setChkOnOff(false);
+    ui->doubleSpinBoxOff->setValue((sen.ValueOff.toInt()));
+    ui->doubleSpinBoxOn->setValue((sen.ValueOn.toInt()));
+
 }
 
 void frmsensor1::genId()
@@ -149,6 +178,14 @@ void frmsensor1::genId()
     }
 }
 
+void frmsensor1::setChkOnOff(bool chk)
+{
+    ui->doubleSpinBoxOff->setEnabled(chk);
+    ui->doubleSpinBoxOn->setEnabled(chk);
+    ui->label_14->setEnabled(chk);
+    ui->label_13->setEnabled(chk);
+}
+
 void frmsensor1::on_btnSave_clicked()
 {
     writeSettingSensor();
@@ -156,13 +193,18 @@ void frmsensor1::on_btnSave_clicked()
 
 void frmsensor1::on_cboSensor_currentIndexChanged(int index)
 {
-    readSettingSensor(index+1);
-    genId();
+    if(pageLoad){
+        readSettingSensor(index+1);
+        genId();
+    }
+
 }
 
 void frmsensor1::on_cboTSensor_currentIndexChanged(int index)
 {
-    genId();
+    if(pageLoad){
+        genId();
+    }
 }
 
 void frmsensor1::on_chkStatusPumpnodeMCU_clicked(bool checked)
@@ -173,4 +215,9 @@ void frmsensor1::on_chkStatusPumpnodeMCU_clicked(bool checked)
 void frmsensor1::on_chkStatusFaucetnodeMCU_clicked(bool checked)
 {
     ui->chkStatusFaucetnodeMCU->isChecked() ? ui->txtIPFaucetnodeMCU->setVisible(true):ui->txtIPFaucetnodeMCU->setVisible(false);
+}
+
+void frmsensor1::on_chkValueOnOff_clicked(bool checked)
+{
+    setChkOnOff(checked);
 }

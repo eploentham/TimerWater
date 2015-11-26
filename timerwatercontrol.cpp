@@ -373,6 +373,9 @@ Sensor TimerWaterControl::readSettingSensor(int row)
     ss.value("statusfaucetnodemcu").toString()=="on" ? sen.StatusFaucetnodeMCU="1":sen.StatusFaucetnodeMCU="0";
     sen.IPFaucetnodeMCU = ss.value("ipfaucetnodemcu").toString();
     sen.IPPumpnodeMCU = ss.value("ippumpnodemcu").toString();
+    sen.ValueOff = ss.value("valueoff").toString();
+    sen.ValueOn = ss.value("valueon").toString();
+    ss.value("statusvalueon").toString()=="on" ? sen.StatusValueOn="1":sen.StatusValueOn="0";
 
     ss.endGroup();
     return sen;
@@ -402,6 +405,10 @@ void TimerWaterControl::writeSettingSensor(int row, Sensor p)
     ss.setValue("statuspumpnodemcu",p.StatusPumpnodeMCU);
     ss.setValue("ipfaucetnodemcu",p.IPFaucetnodeMCU);
     ss.setValue("ippumpnodemcu",p.IPPumpnodeMCU);
+
+    ss.setValue("valueoff",p.ValueOff);
+    ss.setValue("valueon",p.ValueOn);
+    ss.setValue("statusvalueon",p.StatusValueOn);
 
     qDebug() << "writeSettingSensor ";
     ss.endGroup();

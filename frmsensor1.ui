@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>738</width>
-    <height>530</height>
+    <width>740</width>
+    <height>590</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -39,77 +39,6 @@
     <string>Sensor </string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_2">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>430</y>
-     <width>111</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>ระดับต่ำสุด(เปิด)</string>
-   </property>
-  </widget>
-  <widget class="QDoubleSpinBox" name="doubleSpinBoxMax">
-   <property name="geometry">
-    <rect>
-     <x>420</x>
-     <y>430</y>
-     <width>67</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>10</pointsize>
-    </font>
-   </property>
-   <property name="decimals">
-    <number>0</number>
-   </property>
-   <property name="maximum">
-    <double>100000.000000000000000</double>
-   </property>
-  </widget>
-  <widget class="QDoubleSpinBox" name="doubleSpinBoxMin">
-   <property name="geometry">
-    <rect>
-     <x>140</x>
-     <y>430</y>
-     <width>67</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>10</pointsize>
-    </font>
-   </property>
-   <property name="layoutDirection">
-    <enum>Qt::LeftToRight</enum>
-   </property>
-   <property name="decimals">
-    <number>0</number>
-   </property>
-   <property name="maximum">
-    <double>100000.000000000000000</double>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_3">
-   <property name="geometry">
-    <rect>
-     <x>300</x>
-     <y>430</y>
-     <width>111</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>ระดับสูงสุด(ปิด)</string>
-   </property>
-  </widget>
   <widget class="QLineEdit" name="txtDesc">
    <property name="geometry">
     <rect>
@@ -139,7 +68,7 @@
    <property name="geometry">
     <rect>
      <x>600</x>
-     <y>460</y>
+     <y>510</y>
      <width>80</width>
      <height>41</height>
     </rect>
@@ -252,7 +181,7 @@
    <property name="geometry">
     <rect>
      <x>120</x>
-     <y>490</y>
+     <y>520</y>
      <width>121</width>
      <height>21</height>
     </rect>
@@ -265,7 +194,7 @@
    <property name="geometry">
     <rect>
      <x>290</x>
-     <y>490</y>
+     <y>520</y>
      <width>121</width>
      <height>21</height>
     </rect>
@@ -274,24 +203,11 @@
     <string>ปิดใช้งาน</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_9">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>300</y>
-     <width>111</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>เบอร์ Port Pump :</string>
-   </property>
-  </widget>
   <widget class="QLabel" name="label_10">
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>260</y>
+     <y>240</y>
      <width>121</width>
      <height>31</height>
     </rect>
@@ -300,44 +216,11 @@
     <string>เบอร์ Port Sensor :</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_11">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>340</y>
-     <width>121</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>เบอร์ Port วาล์ว :</string>
-   </property>
-  </widget>
   <widget class="QLineEdit" name="txtPortSensor">
    <property name="geometry">
     <rect>
      <x>160</x>
-     <y>260</y>
-     <width>161</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="txtPortPump">
-   <property name="geometry">
-    <rect>
-     <x>160</x>
-     <y>300</y>
-     <width>161</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="txtPort">
-   <property name="geometry">
-    <rect>
-     <x>160</x>
-     <y>340</y>
+     <y>240</y>
      <width>161</width>
      <height>31</height>
     </rect>
@@ -346,8 +229,8 @@
   <widget class="QLineEdit" name="txtIPnodeMCU">
    <property name="geometry">
     <rect>
-     <x>160</x>
-     <y>380</y>
+     <x>550</x>
+     <y>240</y>
      <width>161</width>
      <height>31</height>
     </rect>
@@ -356,8 +239,8 @@
   <widget class="QLabel" name="label_12">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>380</y>
+     <x>360</x>
+     <y>240</y>
      <width>121</width>
      <height>31</height>
     </rect>
@@ -366,24 +249,254 @@
     <string>IP nodeMCU</string>
    </property>
   </widget>
-  <widget class="QCheckBox" name="chkStatusPumpnodeMCU">
+  <widget class="QGroupBox" name="gbDistance">
    <property name="geometry">
     <rect>
-     <x>340</x>
-     <y>300</y>
-     <width>191</width>
+     <x>10</x>
+     <y>360</y>
+     <width>711</width>
+     <height>121</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Sensor Distance cm (สั่งการทำงาน)</string>
+   </property>
+   <widget class="QLabel" name="label_14">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>70</y>
+      <width>111</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>ระดับปิด</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_13">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>70</y>
+      <width>111</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>ระดับเปิด</string>
+    </property>
+   </widget>
+   <widget class="QDoubleSpinBox" name="doubleSpinBoxOn">
+    <property name="geometry">
+     <rect>
+      <x>410</x>
+      <y>70</y>
+      <width>67</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="decimals">
+     <number>0</number>
+    </property>
+    <property name="maximum">
+     <double>100000.000000000000000</double>
+    </property>
+   </widget>
+   <widget class="QDoubleSpinBox" name="doubleSpinBoxMax">
+    <property name="geometry">
+     <rect>
+      <x>410</x>
+      <y>30</y>
+      <width>67</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="decimals">
+     <number>0</number>
+    </property>
+    <property name="maximum">
+     <double>100000.000000000000000</double>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>30</y>
+      <width>111</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>ระดับสูงสุด(ปิด)</string>
+    </property>
+   </widget>
+   <widget class="QDoubleSpinBox" name="doubleSpinBoxOff">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>70</y>
+      <width>67</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="decimals">
+     <number>0</number>
+    </property>
+    <property name="maximum">
+     <double>100000.000000000000000</double>
+    </property>
+   </widget>
+   <widget class="QDoubleSpinBox" name="doubleSpinBoxMin">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>30</y>
+      <width>67</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="decimals">
+     <number>0</number>
+    </property>
+    <property name="maximum">
+     <double>100000.000000000000000</double>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>30</y>
+      <width>111</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>ระดับต่ำสุด(เปิด)</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="chkValueOnOff">
+    <property name="geometry">
+     <rect>
+      <x>500</x>
+      <y>70</y>
+      <width>85</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>เปิดใช้งาน</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="gbMoisture">
+   <property name="geometry">
+    <rect>
+     <x>360</x>
+     <y>530</y>
+     <width>331</width>
+     <height>111</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Sensor Moisture Soil (สั่งการทำงาน)</string>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="gbLight">
+   <property name="geometry">
+    <rect>
+     <x>390</x>
+     <y>60</y>
+     <width>331</width>
+     <height>111</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Sensor Light (สั่งการทำงาน)</string>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="gbTempu">
+   <property name="geometry">
+    <rect>
+     <x>350</x>
+     <y>120</y>
+     <width>331</width>
+     <height>111</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Sensor Tempurature (สั่งการทำงาน)</string>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="gbRain">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>560</y>
+     <width>331</width>
+     <height>111</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Sensor Rain (สั่งการทำงาน)</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_9">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>280</y>
+     <width>111</width>
      <height>31</height>
     </rect>
    </property>
    <property name="text">
-    <string>Pump ต่อผ่าน nodeMCU</string>
+    <string>เบอร์ Port Pump :</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="txtPortPump">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>280</y>
+     <width>161</width>
+     <height>31</height>
+    </rect>
    </property>
   </widget>
   <widget class="QCheckBox" name="chkStatusFaucetnodeMCU">
    <property name="geometry">
     <rect>
      <x>340</x>
-     <y>340</y>
+     <y>320</y>
      <width>221</width>
      <height>31</height>
     </rect>
@@ -392,11 +505,21 @@
     <string> วาล์วน้ำต่อผ่าน nodeMCU</string>
    </property>
   </widget>
+  <widget class="QLineEdit" name="txtPort">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>320</y>
+     <width>161</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
   <widget class="QLineEdit" name="txtIPPumpnodeMCU">
    <property name="geometry">
     <rect>
      <x>550</x>
-     <y>300</y>
+     <y>280</y>
      <width>161</width>
      <height>31</height>
     </rect>
@@ -406,10 +529,36 @@
    <property name="geometry">
     <rect>
      <x>550</x>
-     <y>340</y>
+     <y>320</y>
      <width>161</width>
      <height>31</height>
     </rect>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="chkStatusPumpnodeMCU">
+   <property name="geometry">
+    <rect>
+     <x>340</x>
+     <y>280</y>
+     <width>191</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Pump ต่อผ่าน nodeMCU</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_11">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>320</y>
+     <width>121</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>เบอร์ Port วาล์ว :</string>
    </property>
   </widget>
  </widget>

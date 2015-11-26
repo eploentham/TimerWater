@@ -40,7 +40,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Sensor วัดระดับน้ำ</string>
+     <string>Sensor วัดค่าต่างๆ</string>
     </property>
    </widget>
    <widget class="QPushButton" name="btnnodeMCU">
@@ -150,7 +150,7 @@
      <x>0</x>
      <y>0</y>
      <width>698</width>
-     <height>25</height>
+     <height>20</height>
     </rect>
    </property>
   </widget>
