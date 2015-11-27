@@ -135,7 +135,6 @@ void frmtimer1::readSettingsTimer(int row){
     ui->txtDescription->setText(tim.Description);
 
     //qDebug() << "tim.monday"+tim.monday;
-
 }
 
 frmtimer1::~frmtimer1()
@@ -154,4 +153,12 @@ void frmtimer1::on_btnSave_clicked()
 void frmtimer1::on_cboProgram_currentIndexChanged(int index)
 {
     readSettingsTimer(index+1);
+}
+
+void frmtimer1::on_spinBoxPeriod_valueChanged(int arg1)
+{
+    QTime dtS;
+    dtS = ui->timeEditStart->time();
+    dtS.addSecs(arg1*60);
+    ui->timeEditEnd->setTime(dtS);
 }

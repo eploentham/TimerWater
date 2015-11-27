@@ -51,6 +51,12 @@ frmsensor1::frmsensor1(QWidget *parent) :
     ui->cboModel->addItem("Catalex Moisture Sensor", QVariant(20));
     ui->cboModel->addItem("JSN-SR04T", QVariant(20));
     ui->cboModel->addItem("HC-SR04", QVariant(20));
+
+    ui->gbLight->setGeometry(ui->gbDistance->geometry());
+    ui->gbMoisture->setGeometry(ui->gbDistance->geometry());
+    ui->gbRain->setGeometry(ui->gbDistance->geometry());
+    ui->gbTempu->setGeometry(ui->gbDistance->geometry());
+
     pageLoad=true;
     readSettingSensor(1);
 }
@@ -121,18 +127,20 @@ void frmsensor1::readSettingSensor(int row)
     //}
     //index != -1?ui->cboTSensor->setCurrentIndex(index):ui->cboTSensor->setCurrentIndex(0);
 
-    ui->gbDistance->setVisible(false);
-    ui->gbMoisture->setVisible(false);
-    ui->gbLight->setVisible(false);
-    ui->gbTempu->setVisible(false);
-    ui->gbRain->setVisible(false);
+    //ui->gbDistance->setVisible(false);
+    //ui->gbMoisture->setVisible(false);
+    //ui->gbLight->setVisible(false);
+    //ui->gbTempu->setVisible(false);
+    //ui->gbRain->setVisible(false);
 
     //setChkOnOff(false);
-    index ==0?ui->gbDistance->setVisible(true):ui->gbDistance->setVisible(false);
-    index ==1?ui->gbMoisture->setVisible(true):ui->gbMoisture->setVisible(false);
-    index ==2?ui->gbLight->setVisible(true):ui->gbLight->setVisible(false);
-    index ==3?ui->gbTempu->setVisible(true):ui->gbTempu->setVisible(false);
-    index ==2?ui->gbRain->setVisible(true):ui->gbRain->setVisible(false);
+    //index ==0?ui->gbDistance->setVisible(true):ui->gbDistance->setVisible(false);
+    //index ==1?ui->gbMoisture->setVisible(true):ui->gbMoisture->setVisible(false);
+    //index ==2?ui->gbLight->setVisible(true):ui->gbLight->setVisible(false);
+    //index ==3?ui->gbTempu->setVisible(true):ui->gbTempu->setVisible(false);
+    //index ==2?ui->gbRain->setVisible(true):ui->gbRain->setVisible(false);
+
+    setgbTSensor(index);
 
     ui->txtId->setText(sen.Id);
 
@@ -166,7 +174,7 @@ void frmsensor1::genId()
     if(isNew){
         index1=ui->cboSensor->currentIndex()+1;
 
-        ui->cboTSensor->currentIndex()==0 ? index2=10:index2=20;
+        ui->cboTSensor->currentIndex()==0 ? index2=10:index2=(ui->cboTSensor->currentIndex()+1)*10;
         //index2=ui->cboTSensor->currentIndex()+10;
         qDebug()<<"index1 "+QString::number(index1);
         id = "000"+QString::number(index1);
@@ -184,6 +192,24 @@ void frmsensor1::setChkOnOff(bool chk)
     ui->doubleSpinBoxOn->setEnabled(chk);
     ui->label_14->setEnabled(chk);
     ui->label_13->setEnabled(chk);
+}
+
+void frmsensor1::setgbTSensor(int row)
+{
+    //if(row==1){
+    //    ui->gbDistance->setVisible(true);
+    //}
+    ui->gbDistance->setVisible(false);
+    ui->gbMoisture->setVisible(false);
+    ui->gbLight->setVisible(false);
+    ui->gbTempu->setVisible(false);
+    ui->gbRain->setVisible(false);
+    row ==0?ui->gbDistance->setVisible(true):ui->gbDistance->setVisible(false);
+    row ==1?ui->gbMoisture->setVisible(true):ui->gbMoisture->setVisible(false);
+    row ==2?ui->gbLight->setVisible(true):ui->gbLight->setVisible(false);
+    row ==3?ui->gbTempu->setVisible(true):ui->gbTempu->setVisible(false);
+    row ==4?ui->gbRain->setVisible(true):ui->gbRain->setVisible(false);
+
 }
 
 void frmsensor1::on_btnSave_clicked()
@@ -204,6 +230,8 @@ void frmsensor1::on_cboTSensor_currentIndexChanged(int index)
 {
     if(pageLoad){
         genId();
+        setChkOnOff(index);
+        setgbTSensor(index);
     }
 }
 

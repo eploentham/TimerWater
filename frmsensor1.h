@@ -38,6 +38,7 @@ private:
     void readSettingSensor(int row);
     void genId();
     void setChkOnOff(bool chk);
+    void setgbTSensor(int row);
 };
 
 #endif // FRMSENSOR1_H

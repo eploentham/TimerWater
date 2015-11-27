@@ -22,6 +22,8 @@ private slots:
 
     void on_cboProgram_currentIndexChanged(int index);
 
+    void on_spinBoxPeriod_valueChanged(int arg1);
+
 private:
     Ui::frmtimer1 *ui;
     QString fileIni;
