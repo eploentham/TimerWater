@@ -35,6 +35,7 @@ private slots:
     void on_btnOpenNow2c_clicked();
     void on_btnOpenNow3c_clicked();
     void on_btnOpenNow3_clicked();
+    void on_lvTimer_clicked(const QModelIndex &index);
 };
 
 #endif // FRMSTARTWORK_H

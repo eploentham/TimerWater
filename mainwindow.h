@@ -33,6 +33,8 @@ private slots:
 
     void on_btnnodeMCU_clicked();
 
+    void on_btnInit_clicked();
+
 private:
     Ui::MainWindow *ui;
     TimerWaterControl *twc;

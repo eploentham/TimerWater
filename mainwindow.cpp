@@ -83,3 +83,8 @@ void MainWindow::on_btnnodeMCU_clicked()
     f.setModal(true);
     f.exec();
 }
+
+void MainWindow::on_btnInit_clicked()
+{
+    twc->writeSettingTextForm();
+}

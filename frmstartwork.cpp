@@ -25,12 +25,13 @@ frmStartWork::frmStartWork(QWidget *parent) :
     for(int i=0;i<twc->tim1.size();i++){
         //twc->tim1[i].Active;
         //qDebug()<<"bbb" +QString::number(i);
-        tmp = "Program"+QString::number(i)+" Monday="+twc->tim1[i].monday+" Tueday="+twc->tim1[i].tuesday+" Wednesday="+twc->tim1[i].wednesday+" Thurday="+twc->tim1[i].thursday+
-                " Friday="+twc->tim1[i].friday+" Saturday="+twc->tim1[i].saturday+" Sunday="+twc->tim1[i].sunday+" Start Time="+twc->tim1[i].TimeStart+" End Time="+twc->tim1[i].TimeEnd;
+        tmp = QString::number(i+1)+" "+twc->tim1[i].Description+" "+twc->tf.StartTime+"="+twc->tim1[i].TimeStart+" "+twc->tf.EndTime+"="+twc->tim1[i].TimeEnd;
         //qDebug()<<"ccc" +QString::number(i);
         //if(twc->tim1[i].Active=="1"){
             //tim1[i]=tim->clone();
         ui->lvTimer->addItem(tmp);
+        ui->lvTimer->item(i)->setToolTip( twc->tf.Monday+"="+twc->tim1[i].monday+" "+twc->tf.Tueday+"="+twc->tim1[i].tuesday+" "+twc->tf.Wednesday+"="+twc->tim1[i].wednesday+" "+twc->tf.Thurday+"="+twc->tim1[i].thursday+
+                " "+twc->tf.Friday+"="+twc->tim1[i].friday+" "+twc->tf.Saturday+"="+twc->tim1[i].saturday+" "+twc->tf.Sunday+"="+twc->tim1[i].sunday);
         twc->initGPIO(twc->tim1[i].Port);
         //}
     }
@@ -65,19 +66,19 @@ frmStartWork::frmStartWork(QWidget *parent) :
     ui->pb4->setToolTip(ss4.Description);
     qDebug()<<"ss1.Active" +ss1.Active;
     if(ss1.Active=="1"){
-        tmp = ss1.Description+" ระดับปิด "+ss1.Min1+" ระดับเปิด "+ss1.Max1+" IP nodeMCU "+ss1.IPnodeMCU;
+        tmp = ss1.Description+" "+twc->tf.LevelClose+" "+ss1.Min1+" "+twc->tf.LevelOpen+" "+ss1.Max1+" IP nodeMCU "+ss1.IPnodeMCU;
         ui->lvSensor->addItem(tmp);
     }
     if(ss2.Active=="1"){
-        tmp = ss2.Description+" ระดับปิด "+ss2.Min1+" ระดับเปิด "+ss2.Max1+" IP nodeMCU "+ss2.IPnodeMCU;
+        tmp = ss2.Description+" "+twc->tf.LevelClose+" "+ss2.Min1+" "+twc->tf.LevelOpen+" "+ss2.Max1+" IP nodeMCU "+ss2.IPnodeMCU;
         ui->lvSensor->addItem(tmp);
     }
     if(ss3.Active=="1"){
-        tmp = ss3.Description+" ระดับปิด "+ss3.Min1+" ระดับเปิด "+ss3.Max1+" IP nodeMCU "+ss3.IPnodeMCU;
+        tmp = ss3.Description+" "+twc->tf.LevelClose+" "+ss3.Min1+" "+twc->tf.LevelOpen+" "+ss3.Max1+" IP nodeMCU "+ss3.IPnodeMCU;
         ui->lvSensor->addItem(tmp);
     }
     if(ss4.Active=="1"){
-        tmp = ss4.Description+" ระดับปิด "+ss4.Min1+" ระดับเปิด "+ss4.Max1+" IP nodeMCU "+ss4.IPnodeMCU;
+        tmp = ss4.Description+" "+twc->tf.LevelClose+" "+ss4.Min1+" "+twc->tf.LevelOpen+" "+ss4.Max1+" IP nodeMCU "+ss4.IPnodeMCU;
         ui->lvSensor->addItem(tmp);
     }
     onTimerWork();
@@ -193,4 +194,9 @@ void frmStartWork::on_btnOpenNow3_clicked()
         //qDebug() << "aa";
         ui->btnOpenNow3->setStyleSheet("background-color: rgb(255,125,100)");
     }
+}
+
+void frmStartWork::on_lvTimer_clicked(const QModelIndex &index)
+{
+
 }

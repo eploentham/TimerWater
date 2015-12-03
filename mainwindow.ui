@@ -56,7 +56,7 @@
      <string>ตั้งค่าnodeMCU</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_3">
+   <widget class="QPushButton" name="btnInit">
     <property name="geometry">
      <rect>
       <x>40</x>
@@ -136,7 +136,7 @@
    </widget>
    <zorder>btnSensor</zorder>
    <zorder>btnnodeMCU</zorder>
-   <zorder>pushButton_3</zorder>
+   <zorder>btnInit</zorder>
    <zorder>pushButton_5</zorder>
    <zorder>btnTimer</zorder>
    <zorder>btnRoute</zorder>

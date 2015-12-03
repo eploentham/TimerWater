@@ -6,12 +6,14 @@
 #include <opennow.h>
 #include <sensor.h>
 #include <nodemcu.h>
+#include <textform.h>
 class TimerWaterControl
 {
 public:
     Timer *tim;
     Sensor *sen;
     nodeMCU *mcu;
+    TextForm tf;
     QList <Timer> tim1;
     QList <Sensor> sen1;
 
@@ -29,6 +31,8 @@ public:
     QString closeGPIO(QString port);
     void initGPIO(QString port);
     void uninitGPIO(QString port);
+    TextForm readSettingsTextForm();
+    void writeSettingTextForm();
 
     //Sensor
     Sensor readSettingSensor(int row);

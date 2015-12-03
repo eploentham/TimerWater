@@ -32,7 +32,8 @@ SOURCES += main.cpp\
     connectiondb.cpp \
     sensor.cpp \
     frmnodemcu.cpp \
-    nodemcu.cpp
+    nodemcu.cpp \
+    textform.cpp
 
 HEADERS  += mainwindow.h \
     frmtimer.h \
@@ -54,7 +55,8 @@ HEADERS  += mainwindow.h \
     connectiondb.h \
     sensor.h \
     frmnodemcu.h \
-    nodemcu.h
+    nodemcu.h \
+    textform.h
 
 FORMS    += mainwindow.ui \
     frmtimer.ui \

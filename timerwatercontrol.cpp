@@ -12,6 +12,7 @@
 TimerWaterControl::TimerWaterControl(QString path)
 {
     fileIni = path + "/timerwater.ini";
+    tf = readSettingsTextForm();
     refreshTim1Active();
 }
 
@@ -500,5 +501,66 @@ void TimerWaterControl::writeSettingnodeMCU(int row, nodeMCU p)
     ss.setValue("description",p.Description);
 
     qDebug() << "writeSettingnodeMCU ";
+    ss.endGroup();
+}
+TextForm TimerWaterControl::readSettingsTextForm(){
+    QSettings ss(fileIni, QSettings::IniFormat);
+    TextForm tf;
+    //QSettings ss(fileIni, QSettings::IniFormat);
+    //qDebug() << "readSettingsTimer "+QString::number(row);
+    ss.beginGroup("TextForm");
+
+    tf.SWbtnOpenNow1 = ss.value("SWbtnOpenNow1").toString();
+    tf.SWbtnOpenNow2 = ss.value("SWbtnOpenNow2").toString();
+    tf.SWbtnOpenNow3 = ss.value("SWbtnOpenNow3").toString();
+    tf.minute = ss.value("minute").toString();
+    tf.hour = ss.value("hour").toString();
+    tf.second = ss.value("second").toString();
+    tf.Friday = ss.value("Friday").toString();
+    tf.LevelClose = ss.value("LevelClose").toString();
+    tf.LevelOpen = ss.value("LevelOpen").toString();
+    tf.Monday = ss.value("Monday").toString();
+    tf.Saturday = ss.value("Saturday").toString();
+    tf.Sunday = ss.value("Sunday").toString();
+    tf.Thurday = ss.value("Thurday").toString();
+    tf.Tueday = ss.value("Tueday").toString();
+    tf.Wednesday = ss.value("Wednesday").toString();
+    tf.StartTime = ss.value("StartTime").toString();
+    tf.EndTime = ss.value("EndTime").toString();
+    //tf. = ss.value("port").toString();
+
+    ss.endGroup();
+    return tf;
+}
+void TimerWaterControl::writeSettingTextForm()
+{
+    QSettings ss(fileIni, QSettings::IniFormat);
+    ss.beginGroup("TextForm");
+
+    ss.setValue("SWbtnOpenNow1","");
+    ss.setValue("SWbtnOpenNow2","");
+    ss.setValue("SWbtnOpenNow3","");
+    ss.setValue("minute","นาที");
+    ss.setValue("hour","ชั่งโมง");
+    ss.setValue("second","วินาที");
+    ss.setValue("Friday","วันศุกร์");
+    ss.setValue("LevelClose","ระดับปิด");
+    ss.setValue("LevelOpen","ระดับเปิด");
+    ss.setValue("Monday","วันจันทร์");
+    ss.setValue("Saturday","วันเสาร์");
+
+    ss.setValue("Sunday","วันอาทิตย์");
+    ss.setValue("Thurday","วันพฤหสบดี");
+    ss.setValue("Tueday","วันอังคาร");
+    ss.setValue("Wednesday","วันพุธ");
+    ss.setValue("StartTime","เวลาเริ่ม");
+    ss.setValue("EndTime","เวลาสิ้นสุด");
+    //ss.setValue("sensorport2",p.SensorPort2);
+    //ss.setValue("sensorport3",p.SensorPort3);
+    //ss.setValue("sensorport4",p.SensorPort4);
+    //ss.setValue("sensorport5",p.SensorPort5);
+    //ss.setValue("description",p.Description);
+
+    qDebug() << "writeSettingTextForm ";
     ss.endGroup();
 }
