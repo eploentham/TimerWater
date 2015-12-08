@@ -13,6 +13,7 @@ TimerWaterControl::TimerWaterControl(QString path)
 {
     fileIni = path + "/timerwater.ini";
     tf = readSettingsTextForm();
+    gpioR.GPIO2="";
     refreshTim1Active();
 }
 

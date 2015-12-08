@@ -42,7 +42,10 @@ public:
     //nodeMCU
     nodeMCU readSettingnodeMCU(int row);
     void writeSettingnodeMCU(int row, nodeMCU p);
-
+    GPIORaspi gpioR;
+    struct GPIORaspi{
+        QString GPIO2, GPIO3, GPIO4, GPIO17, GPIO27, GPIO22, GPIO10, GPIO09, GPIO11, GPIO5, GPIO6, GPIO19, GPIO26, GPIO14, GPIO15, GPIO18, GPIO23, GPIO24, GPIO25, GPIO8, GPIO7, GPIO12, GPIO16, GPIO20, GPIO21;
+    };
 
 private:
     QString fileIni;
